@@ -11,37 +11,38 @@ html
 }
 :root 
 {
-    --principal-yellow: #d1c627f5;
-    --secundary-blue: #509ee7;
-    --secundary-darkblue: #5562d3ce;
-    --principal-dark: #020c47d7;
-    --warn-black: #3b3b46;
-    --black: #232328;
-    --grey: #878aa7;
-    --white: #bcc6cf;
+    --letra-grande: #fed5cb;
+    --letra-chica: #dfe3ef;
+    --borde: #ff6d58;
+    --background: #94aac9;
+    --main-color: #2f4058;
+    --black: #18212e;
+    --grey: #414953;
+    --white: #abb7c7;
     --just-white: #fff;
 }
-header
+body
 {
-    background: var(--white);
-    color: var(--black);
-    justify-content: center;
+    background: var(--background);
 }
-header .headercontainer
+.logo-container
 {
-    display: grid;
-    grid-template-columns: 1fr 4fr 1fr;
+    height: 80vw;
+    max-height: 300px;
+    background-image: url(https://i.imgur.com/cpj8Tpk.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
-.headercontainer .header--title-container
-{
-    display: flex;
-    padding: 5px;
-    flex-direction: column;
-    color: var(--principal-dark);
-    background-color: var(--principal-yellow);
-}
-.headercontainer .header--title-container
-{
-    font-size: 2rem;    
-    text-align: center;
-}
+/*         
+display: grid;
+grid-template: filas / columnas; // 10px auto o repeat(cantidad, tamaño) o minmax(tamaño minimo, maximo)
+grid-template-rows: repeat(4, 100px);
+grid-template-columns: [inicio] 200px [linea2] 200px [final];
+grid-template-areas:"header header" 
+                    "left contenido" 
+                    "footer footer";
+gap: filas columnas; // column-gap: 30px; & row-gap: 50px;
+justify-content: center; & align-content: center;
+justify-items: center; & align-items: center;
+*/
