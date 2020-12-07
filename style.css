@@ -25,7 +25,7 @@ body
 {
     background: var(--background);
 }
-.logo-container
+.logo
 {
     height: 80vw;
     max-height: 300px;
@@ -33,6 +33,23 @@ body
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
+}
+.bio
+{
+    width: calc(100%-5px);
+    background-color: var(--black);
+    color: var(--letra-chica);
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 15px;
+    border: 5px solid var(--borde);
+    padding: 6px;
+    margin: 5px;
+}
+.bio h1
+{
+    color: var(--letra-grande);
+    font-size: 2rem;
 }
 /*         
 display: grid;
