@@ -1,14 +1,3 @@
-html 
-{
-    font-size: 62.5%;
-    font-family: "DM Sans", sans-serif;
-}
-*
-{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
 :root 
 {
     --letra-grande: #fed5cb;
@@ -16,7 +5,7 @@ html
     --borde: #ff6d58;
     --background: #94aac9;
     --main-color: #2f4058;
-    --black: #18212e;
+    --black: #03122a;
     --grey: #414953;
     --white: #abb7c7;
     --just-white: #fff;
@@ -25,31 +14,67 @@ body
 {
     background: var(--background);
 }
-.logo
+.header
 {
     height: 80vw;
-    max-height: 300px;
-    background-image: url(https://i.imgur.com/cpj8Tpk.png);
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
+    margin: 0;
+    max-height: 250px;
+    width: 100%;
+}
+.header__logo
+{
+    width: auto;
+    max-height: 250px;
+    margin: 0 auto;
 }
 .bio
 {
-    width: calc(100%-5px);
-    background-color: var(--black);
-    color: var(--letra-chica);
-    font-size: 1.2rem;
-    font-weight: bold;
-    border-radius: 15px;
-    border: 5px solid var(--borde);
-    padding: 6px;
-    margin: 5px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: "BioT BioT BioT" "BioP BioP BioP";
+}
+@media (min-width: 426px) 
+{
+    .bio
+    {
+        grid-template-areas: "BioT BioP BioP"; 
+    }
+}
+@media (min-width: 768px) 
+{
+    .bio
+    {
+        grid-template-areas: "BioT . ." "BioP . ."; 
+    }
 }
 .bio h1
 {
+    justify-content: center;
     color: var(--letra-grande);
-    font-size: 2rem;
+    font-size: 2rem;;
+    background-color: var(--black);
+    border-radius: 15px;
+    border: 5px solid var(--borde);
+    margin: 5px auto;
+    padding: 0 5px;
+    max-height: 37px;
+    width: 58px;
+    grid-area: BioT;
+    align-self: center;
+}
+.bio p
+{
+    padding: 6px;
+    background-color: var(--black);
+    border-radius: 15px;
+    border: 5px solid var(--borde);
+    margin: 5px;
+    font-size: 0.85rem;
+    color: var(--letra-chica);
+    max-width: 500px;
+    min-width: 247px;
+    grid-area: BioP;
 }
 /*         
 display: grid;
