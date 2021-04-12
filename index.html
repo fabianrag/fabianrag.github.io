@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Página oficial de Fabian Araya">
+        <meta name="robots" content="index.follow">
+        <link rel="stylesheet" href="./style/style.css">                            <!-- CSS -->
+        <link rel="stylesheet" href="(Google fonts)">                               <!-- Fuente -->
+        <link rel="stylesheet" href="./.css" media="screen and (min-width: 600px)"> <!-- Breakpoint (mydevice.io)-->
+        <title>Fabian Araya</title>
+    </head>
+
+    <body>
+        <header></header>
+        <nav></nav>
+        <main></main>
+        <footer></footer>
+    </body>
+
+</html>
+
+<!-- 
+Imágenes:
+<figure>
+    <img src="" alt="">
+    <figcaption></figcaption>
+</figure>
+*Tiny PNG o Verexif, JPG: fotos, ojala 70kb y PNG8: logos/iconos con trasparente
+ -->
+
+<!-- 
+Imágenes con Breakpoint:
+<picture>
+    <source media="(min-width: )" srcset="imagen-720w.jpg">
+    <source media="(min-width: )" srcset="imagen-480w-mobile.jpg">
+    <img src="imagen-800w.jpg" alt="Imagen" title="">
+</picture>
+ -->
+
+<!-- 
+Videos:
+<video controls preload=”auto”><source src=””/>
+-->
+
+<!-- 
+Formularios:
+<form action="(Base de datos)">
+    <label for="(Nombre)">
+        <span>Pregunta</span>
+        <input type="(Tipo)" id="(Nombre)" placeholder="" name="" autocomplete="" required>  --Formulario normal
+
+        <select name="" id="">                                                               --Seleccionar opciones
+            <option value=""></option>
+        </select>
+        o
+        <label for=""></label>
+        <input list="" name="" id="">
+        <datalist id="">
+            <option value=""></option>
+        </datalist>
+
+        <input type="(Submit)" value=""> o <button type="submit"></button>                  --Botones
+    </label>
+</form> 
+-->
+
+<!-- 
+Especificidad:
+Orden de declaración: [Navegador, CSS e !important] [!important, inline styles, #id, .class y tag] [0,0,0,0,0] [Orden de fuente]
+En conflicto: !important, inline style y selector de clases 
+Combinadores: Hermano adyacente (+), Hermano general (~), Hijo (>) y Descendiente ( )
+-->
+
+<!-- 
+EM: En relación a parámetros del padre
+REM: En relación al HTML, Recomendado
+Medidas útiles con max y min-width
+Position por defecto como static
+-->
+
+<!--
+Display:
+Por defecto block (width: 100%;), otros: list-item (Vertical), inline (no permite modificación vertical) e inline-block (que evita esta última restricción), flex (permite un ordenamiento automático)
+Declaraciones: 
+display-direction: row o column; 
+flex-wrap: wrap; 
+justify-content: center o space-evenly o flex-end; 
+align-items: center o flex-start o stretch o baseline; 
+order: 1, 2, 3, 4; 
+flex-grow: 1; 
+flex-basis: 10rem
+-->
