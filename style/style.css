@@ -4,13 +4,34 @@
     margin: 0;
 }
 :root {
-    --variable-name: 10px o #666;   /* Llamar: {característica: var(--variable-name);} */
+    --primaryColor: #2D6286;   /* Llamar: {característica: var(--variable-name);} */
+    --secondaryColor: #40B5BF;
+    --background: #E8E2BA;
+    --primaryFontColor: #383838;
+    --secondaryFontColor: #828282;
 }
 html {
-    font-family: sans-serif;
+    font-family: 'Marvel', sans-serif;
+    font-weight: bold;
     font-size: 67.5%;
 }
-
+.secondaryFont {
+    font-style: italic;
+}
+main {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+main figure {
+    width: 100px;
+    height: 100px;
+}
+img {
+    width: 100%;
+}
 
 /* 
 Metodología BEM 
