@@ -1,37 +1,44 @@
-* {
-    box-sizing: border-box;
+* { box-sizing: border-box;
     padding: 0;
-    margin: 0;
-}
+    margin: 0;}
 :root {
     --primaryColor: #2D6286;   /* Llamar: {característica: var(--variable-name);} */
     --secondaryColor: #40B5BF;
     --background: #E8E2BA;
     --primaryFontColor: #383838;
-    --secondaryFontColor: #828282;
-}
+    --secondaryFontColor: #828282;}
 html {
     font-family: 'Marvel', sans-serif;
     font-weight: bold;
     font-size: 67.5%;
-}
+    color: var(--primaryFontColor);}
 .secondaryFont {
-    font-style: italic;
-}
-main {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-main figure {
-    width: 100px;
-    height: 100px;
-}
-img {
-    width: 100%;
-}
+    color: var(--secondaryFontColor);
+    font-style: italic;}
+
+body {  background-color: var(--primaryColor);
+        padding: 10px;}
+header {background-color: var(--secondaryColor);
+        border: none;
+        border-radius: 20px;
+        box-shadow: 0px 4px 8px rgb(89 73 30 / 16%);
+
+        height: auto;
+        min-width: 260px;
+        position: relative;
+        width: 100%;
+        display: flex;
+            flex-direction: column;
+            justify-content: start;
+            text-align: center;}
+header img {width: 100%;
+            max-width: 660px;
+            align-self: center;}
+nav {}
+.user {}
+main {}
+main img {}
+footer {}
 
 /* 
 Metodología BEM 

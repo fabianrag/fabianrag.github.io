@@ -1,41 +1,29 @@
 <!DOCTYPE html>
 <html lang="es">
-
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Página oficial de Fabian Araya">
         <meta name="robots" content="index.follow">
-        <link rel="stylesheet" href="./style/style.css">                                                                    <!-- CSS -->
-        <link rel="preconnect" href="https://fonts.gstatic.com">                                                            <!-- 1st part googleFonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Marvel:ital,wght@0,700;1,400&display=swap" rel="stylesheet">   <!-- 2st part googleFonts -->
-        <link rel="stylesheet" href="./.css" media="screen and (min-width: 600px)">                                         <!-- Breakpoint (mydevice.io)-->
+        <link rel="stylesheet" href="./style/style.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Marvel:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+        <!-- <link rel="stylesheet" href="./.css" media="screen and (min-width: 600px)">   -->
         <title>Fabian Araya</title>
     </head>
-
     <body>
-        <header></header>
+        <header>
+            <img src="./image/logoHeader-v1--660px.png">
+        </header>
         <nav></nav>
-        <main>
-            <figure>
-                <a href="https://www.notion.so/Fabian-Araya-6bd896d29a3948b28f98f517efef9b6c"><img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Notion_app_logo.png" alt="Notion's logo"></a>
-            </figure>
-        </main>
+        <section class="user"></section>
+<!--         <main>
+                <img href="https://www.notion.so/Fabian-Araya-6bd896d29a3948b28f98f517efef9b6c" src="https://upload.wikimedia.org/wikipedia/commons/4/45/Notion_app_logo.png" alt="Notion's logo">
+        </main> -->
         <footer></footer>
-        <div class="user"></div>
     </body>
-
 </html>
-
-<!-- 
-Imágenes:
-<figure>
-    <img src="" alt="">
-    <figcaption></figcaption>
-</figure>
-*Tiny PNG o Verexif, JPG: fotos, ojala 70kb y PNG8: logos/iconos con trasparente
- -->
 
 <!-- 
 Imágenes con Breakpoint:
@@ -71,31 +59,4 @@ Formularios:
         <input type="(Submit)" value=""> o <button type="submit"></button>                  --Botones
     </label>
 </form> 
--->
-
-<!-- 
-Especificidad:
-Orden de declaración: [Navegador, CSS e !important] [!important, inline styles, #id, .class y tag] [0,0,0,0,0] [Orden de fuente]
-En conflicto: !important, inline style y selector de clases 
-Combinadores: Hermano adyacente (+), Hermano general (~), Hijo (>) y Descendiente ( )
--->
-
-<!-- 
-EM: En relación a parámetros del padre
-REM: En relación al HTML, Recomendado
-Medidas útiles con max y min-width
-Position por defecto como static
--->
-
-<!--
-Display:
-Por defecto block (width: 100%;), otros: list-item (Vertical), inline (no permite modificación vertical) e inline-block (que evita esta última restricción), flex (permite un ordenamiento automático)
-Declaraciones: 
-display-direction: row o column; 
-flex-wrap: wrap; 
-justify-content: center o space-evenly o flex-end; 
-align-items: center o flex-start o stretch o baseline; 
-order: 1, 2, 3, 4; 
-flex-grow: 1; 
-flex-basis: 10rem
 -->
