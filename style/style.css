@@ -6,7 +6,8 @@
     --secondaryColor: #40B5BF;
     --background: #E8E2BA;
     --primaryFontColor: #383838;
-    --secondaryFontColor: #828282;}
+    --secondaryFontColor: #828282;
+    --myWhite: #F8F0E4;}
 html {
     font-family: 'Marvel', sans-serif;
     font-weight: bold;
@@ -17,8 +18,9 @@ html {
     font-style: italic;}
 
 body {  background-color: var(--primaryColor);
+
         padding: 10px;}
-header {background-color: var(--secondaryColor);
+header {background-color: var(--myWhite);
         border: none;
         border-radius: 20px;
         box-shadow: 0px 4px 8px rgb(89 73 30 / 16%);
@@ -27,14 +29,19 @@ header {background-color: var(--secondaryColor);
         min-width: 260px;
         position: relative;
         width: 100%;
+
         display: flex;
             flex-direction: column;
             justify-content: start;
             text-align: center;}
-header img {width: 100%;
-            max-width: 660px;
-            align-self: center;}
-nav {}
+header img {align-self: center;
+
+            width: 100%;
+            max-width: 660px;}
+header nav {position: absolute;
+            
+
+}
 .user {}
 main {}
 main img {}
