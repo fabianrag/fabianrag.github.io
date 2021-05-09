@@ -80,10 +80,10 @@ nav .nav-icon {
     margin-left: 5px;
 }
 .icon-container {
-    width: 44px;
+    width: 47px;
     background-color: var(--myWhite);
     border-radius: 22px;
-    padding: 7px;
+    padding: 6px;
 }
 .icon {
     align-self: center;
@@ -91,18 +91,25 @@ nav .nav-icon {
     width: 100%;
 }
 .apoyame {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 42px;
     align-items: center;
     text-align: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    font-weight:bolder;
     padding: 10px;
 }
     .apoyame h1 {
         margin-bottom: 16px;
         font-size: 3rem;
+        grid-column: 1 / span 2;
+    }
+    .apoyame h2 {
+        margin-bottom: 20px;
+        margin-right: 8px;
+    }
+    .apoyame b {
+        color: var(--primaryFontColor);
+        font-style: italic;
+        font-size: 2rem;
     }
 
 
