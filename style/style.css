@@ -13,55 +13,56 @@
 }
 html {
     font-family: 'Marvel', sans-serif;
-    font-weight: bold;
+    font-style: italic;
     font-size: 67.5%;
     color: var(--primaryFontColor);
 }
 .secondaryFont {
     color: var(--secondaryFontColor);
-    font-style: italic;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.75rem;
 }
 body {  
-    background-color: var(--primaryColor);
-
+    background: linear-gradient(to bottom, #2d6286 0%, #ffffcc 100%);
     padding: 10px;
-}
-header {
-    background-color: var(--myWhite);
-    border: none;
-    border-radius: 20px;
-    box-shadow: 0px 4px 8px rgb(89 73 30 / 16%);
-
-    height: auto;
-    padding-bottom: 30px;
-    min-width: 260px;
-    position: relative;
-    width: 100%;
-
     display: flex;
-        flex-direction: column;
-        justify-content: start;
-        text-align: center;
+    flex-direction: column;
+    align-items: center;
 }
-header img {
-    align-self: center;
-
-    max-width: 260px;
+    header {
+        padding-bottom: 30px;
+        position: relative;
+        display: flex;
+            flex-direction: column;
+            justify-content: start;
+            text-align: center;
+    }
+        header nav {
+            align-self: center;
+            display: grid;
+            grid-template-columns: repeat(20, 1fr);
+            grid-template-rows: repeat(10, 1fr);
+            width: 220px;
+            height: 54px;
+            position: absolute;
+                top: 194px;
+            background: var(--secondaryColor);
+            box-shadow: 0px -2px 2px rgb(89 73 30 / 49%);
+            border-radius: 25px;
+            color: var(--myWhite);
+        }
+    main {
+        margin-top: 32px;
+    }
+.card {
+    background-color: var(--myWhite);
+    border: 3px solid var(--primaryFontColor);
+    border-radius: 20px;
     width: 100%;
-}
-nav {
-    align-self: center;
-    display: grid;
-    grid-template-columns: repeat(20, 1fr);
-    grid-template-rows: repeat(10, 1fr);
-    width: 220px;
-    height: 54px;
-    position: absolute;
-        top: 194px;
-    background: var(--secondaryColor);
-    box-shadow: 4px -3px 2px rgb(89 73 30 / 49%);
-    border-radius: 25px;
-    color: var(--myWhite);
+    min-width: 260px;
+    max-width: 410px;
+    box-shadow: 0px -3px 2px rgb(89 73 30 / 50%);
 }
 nav .nav-user {
     grid-row: 1 / span 2;
@@ -80,11 +81,29 @@ nav .nav-icon {
 }
 .icon-container {
     width: 44px;
-    height: 44px;
     background-color: var(--myWhite);
     border-radius: 22px;
+    padding: 7px;
+}
+.icon {
+    align-self: center;
+    max-width: 260px;
+    width: 100%;
+}
+.apoyame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight:bolder;
     padding: 10px;
 }
+    .apoyame h1 {
+        margin-bottom: 16px;
+        font-size: 3rem;
+    }
 
 
 /* 
