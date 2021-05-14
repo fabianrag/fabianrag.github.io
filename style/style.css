@@ -29,6 +29,9 @@ html {
         font-weight: bold;
         font-size: 1.75rem;
     }
+    a {
+        width: 50px;
+    }
     b {
         color: var(--primaryFontColor);
         font-style: italic;
@@ -41,13 +44,16 @@ html {
         background-color: var(--myWhite);
         border: 3px solid var(--primaryFontColor);
         border-radius: 20px;
-        margin: 10px;
+        margin: 3%;
         padding: 0 10px 32px 10px;
         text-align: center;
     }
         header {
             position: relative;
         }
+            header section img {
+                width: 237.22px;
+            }
             header nav {
                 display: flex;
                 justify-content: center;
@@ -77,8 +83,16 @@ html {
             .procedimientos h1 {
             }
             main .apoyame {
-
+                display: flex;
+                flex-direction: column;
+                align-items: center;
             }
+                main .apoyame h1 {
+                    margin-bottom: 20px;
+                }
+                main .apoyame a {
+                    margin-bottom: 15px;
+                }
         footer {
             width: 100%;
         }
