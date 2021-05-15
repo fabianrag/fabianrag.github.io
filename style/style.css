@@ -22,6 +22,7 @@ html {
     }
     h1 {
         font-size: 3rem;
+        margin-bottom: 20px;
     }
     h2 {
         color: var(--secondaryFontColor);
@@ -31,6 +32,7 @@ html {
     }
     a {
         width: 50px;
+        margin-bottom: 15px;
     }
     b {
         color: var(--primaryFontColor);
@@ -44,14 +46,20 @@ html {
         background-color: var(--myWhite);
         border: 3px solid var(--primaryFontColor);
         border-radius: 20px;
-        margin: 3%;
+        margin: 10px;
         padding: 0 10px 32px 10px;
         text-align: center;
+        max-width: 355px;
+        position: relative;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
-        header {
-            position: relative;
-        }
-            header section img {
+            header section {
+                max-width: 100%;
+            }
+            header section > img {
                 width: 237.22px;
             }
             header nav {
@@ -70,6 +78,9 @@ html {
                 border-radius: 25px;
                 color: var(--myWhite);
             }
+                header nav h1, header nav h2 {
+                    margin: 0;
+                }
                 header nav figure {
                     width: 40px;
                     background-color: var(--myWhite);
@@ -78,21 +89,11 @@ html {
                     margin: auto 0 auto 20px;
                 }
         main {
-            margin-top: 38px;
+            margin-top: 43px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
         }
-            .procedimientos h1 {
-            }
-            main .apoyame {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-                main .apoyame h1 {
-                    margin-bottom: 20px;
-                }
-                main .apoyame a {
-                    margin-bottom: 15px;
-                }
         footer {
             width: 100%;
         }
