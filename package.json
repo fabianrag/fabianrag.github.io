@@ -1,0 +1,23 @@
+{
+  "name": "fabianaraya",
+  "version": "1.0.0",
+  "description": "backend de mi pagina web",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "new": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fabianrag/fabianrag.github.io.git"
+  },
+  "author": "Fabian Araya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fabianrag/fabianrag.github.io/issues"
+  },
+  "homepage": "https://github.com/fabianrag/fabianrag.github.io#readme",
+  "dependencies": {
+    "xmlhttprequest": "^1.8.0"
+  }
+}
