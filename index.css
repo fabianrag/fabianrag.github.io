@@ -97,14 +97,34 @@ html {
         footer {
             width: 100%;
         }
-            footer .intro {
-                background: linear-gradient(to bottom, #ffffcc -40%, #005741 100%);
-                margin-top: 32px;
-                height: 200px;
+            footer .contPuntos {
+                background: linear-gradient(to bottom, #ffffcc -26%, #005741 90%);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+            }
+            footer .contPuntos-circ {
+                background-color: var(--background);
+                padding: 20px;
+                margin: 10px;
+                border: 3px solid var(--primaryFontColor);
+                border-radius: 23px;
             }
             footer .content {
                 background-color: #005741;
-                height: 100px;
+                height: auto;
+                padding: 10vw;
+            }
+            .content h1 {
+                background-color: var(--primaryColor);
+                color: var(--background);
+                width: 150px;
+                padding: 0 20px;
+                border-radius: 20px;
+            }
+            .content h2 {
+                color: var(--myWhite);
             }
 /* 
 Metodología BEM 
