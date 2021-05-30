@@ -32,9 +32,36 @@ const anotherFunction = async (url_api) => {
 console.log("Before");
 anotherFunction(API);
 console.log("After");
-
-const logIn = document.getElementById("logButton");
-const deployMessage = () => {
-    alert("Démole");
+/* Sección de log */
+const start = () => {
+    logBox.removeChild(logForm);
+    logBox.removeChild(registerForm);
 }
-logIn.addEventListener("click", deployMessage);
+const startLog = () => {
+    logBox.appendChild(logForm);
+}
+const deployLog = () => {
+    logBox.removeChild(registerForm);
+    logBox.appendChild(logForm);
+}
+const deployRegister = () => {
+    logBox.removeChild(logForm);
+    logBox.appendChild(registerForm);
+}
+const anError = () => {
+    alert("Aún falta agregar esta función");
+}
+const iniciarSesion = document.getElementById('iniciarSesion');
+const registrarme = document.getElementById('registrarme');
+const returnLog = document.getElementById('returnLog');
+const returnRegister = document.getElementById('returnRegister');
+const logBox = document.getElementById('logBox');
+const logForm = document.getElementById("logForm");
+const registerForm = document.getElementById("registerForm");
+const logButton = document.getElementById("logButton");
+returnLog.addEventListener("click", deployLog);
+returnRegister.addEventListener("click", deployRegister);
+logButton.addEventListener("click", startLog);
+iniciarSesion.addEventListener("click", anError);
+registrarme.addEventListener("click", anError);
+start();

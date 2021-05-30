@@ -26,26 +26,28 @@
             </section>
         </header>
         <main>
-            <section class="form">
-                <h1>Entra con tu cuenta</h1>
-                <form action="" class="logBox--form">
-                    <input type="text" class="input" placeholder="Nombre">
-                    <input type="password" class="input" placeholder="Contraseña">
-                    <button class="form--button"><h1>Iniciar Sesión</h1></button>
-                </form>
-                <h2 class="form--secButton"><a href="#">Registrarme</a></h2>
-            </section>
-            <section class="form">
-                <h1>Registra tu cuenta</h1>
-                <form action="" class="registerBox--form">
-                    <input type="text" class="input" placeholder="Nombre">
-                    <input type="password" class="input" placeholder="Contraseña">
-                    <input type="password" class="input" placeholder="Confirma tu Contraseña">
-                    <button class="form--button"><h1>Registrarme</h1></button>
-                </form>
-                <h2><a href="#">Iniciar Sesión</a></h2>
-            </section>
-            <section class="criptoBox">
+            <div id="logBox">
+                <section class="form" id="logForm">
+                    <h1>Entra con tu cuenta</h1>
+                    <form action="" class="logBox--form">
+                        <input type="text" class="input" placeholder="Nombre">
+                        <input type="password" class="input" placeholder="Contraseña">
+                        <button id="iniciarSesion"><h1>Iniciar Sesión</h1></button>
+                    </form>
+                    <h2 id="returnRegister">Registrarme</h2>
+                </section>
+                <section class="form" id="registerForm">
+                    <h1>Registra tu cuenta</h1>
+                    <form action="" class="registerBox--form">
+                        <input type="text" class="input" placeholder="Nombre">
+                        <input type="password" class="input" placeholder="Contraseña">
+                        <input type="password" class="input" placeholder="Confirma tu Contraseña">
+                        <button id="registrarme"><h1>Registrarme</h1></button>
+                    </form>
+                    <h2 id="returnLog">Iniciar Sesión</h2>
+                </section>
+            </div>
+            <section id="criptoBox">
                 <h1>Productos criptográficos</h1>
                 <h2>Mira el precio de mis proyectos favoritos, actualizados cada minuto</h2>
                 <a href="">
