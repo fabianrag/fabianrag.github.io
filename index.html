@@ -16,18 +16,21 @@
         <header>
             <section>
                 <img src="./image/logoHeader-v2--660px.png">
-                <nav>
-                    <h2>usuario</h2>
-                    <h1>ANONIMO</h1>
-                    <figure id="logButton">
-                        <img src="/image/switch.png" alt="Log In">
-                    </figure>
-                </nav>
             </section>
         </header>
         <main>
-            <div id="logBox">
-                <section class="form" id="logForm">
+            <section id="logSection">
+                <div id="user">
+                    <h2>usuario</h2>
+                    <h1>ANONIMO</h1>
+                    <figure id="logButton-switch">
+                        <img src="/image/switch.png" alt="Log In">
+                    </figure>
+                    <figure id="logButton-cross">
+                        <img src="/image/cross.png" alt="Close">
+                    </figure>
+                </div>
+                <div class="form logItem" id="login">
                     <h1>Entra con tu cuenta</h1>
                     <form action="" class="logBox--form">
                         <input type="text" class="input" placeholder="Nombre">
@@ -35,8 +38,8 @@
                         <button id="iniciarSesion"><h1>Iniciar Sesión</h1></button>
                     </form>
                     <h2 id="returnRegister">Registrarme</h2>
-                </section>
-                <section class="form" id="registerForm">
+                </div>
+                <div class="form logItem" id="register">
                     <h1>Registra tu cuenta</h1>
                     <form action="" class="registerBox--form">
                         <input type="text" class="input" placeholder="Nombre">
@@ -45,8 +48,8 @@
                         <button id="registrarme"><h1>Registrarme</h1></button>
                     </form>
                     <h2 id="returnLog">Iniciar Sesión</h2>
-                </section>
-            </div>
+                </div>
+            </section>
             <section id="criptoBox">
                 <h1>Productos criptográficos</h1>
                 <h2>Mira el precio de mis proyectos favoritos, actualizados cada minuto</h2>
