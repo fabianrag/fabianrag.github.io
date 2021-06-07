@@ -153,6 +153,7 @@ main {
 .form h2 {
     text-decoration: none;
     color: var(--primaryColor);
+    margin-bottom: 15px;
 }
 
 
