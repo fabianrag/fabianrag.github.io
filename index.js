@@ -2,6 +2,7 @@
 const logSection = document.getElementById('logSection');
 const userContainer = document.getElementById('user');
 const switchButton = document.getElementById('logButton-switch');
+let activeBox = 0;
 
 const addSwitchButton = () => {
     const crossButton = document.getElementById('logButton-cross');
@@ -54,6 +55,7 @@ const addBox = (tipo, encabezado, idBoton, action, retorno) => {
         const footer = document.createElement('h2');
         footer.id = "loginFooter";
         footer.addEventListener('click', changeBox);
+        activeBox = 0;
         const footerText = document.createTextNode(retorno);
         footer.appendChild(footerText);
         container.appendChild(footer);
@@ -67,7 +69,6 @@ const addRegisterBox = () => {
     const registerButton = document.getElementById("registrarme");
     registerButton.insertAdjacentElement('beforebegin', inputPassword);
 };
-let activeBox = 0;
 function changeBox() {
     if (activeBox === 0) {
         logSection.removeChild(logSection.lastElementChild);
