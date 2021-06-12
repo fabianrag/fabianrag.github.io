@@ -82,19 +82,37 @@ function changeBox() {
 }
 
 //FetchData
-
-let XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
-const  fetchData = (url_api) => {
+const burl = "https://api.binance.com";
+const currentURL = burl + "/api/v3/avgPrice?symbol=KSMUSDT";
+const candlesQuery = burl + "/api/v3/klines?symbol=KSMUSDT&interval=1d&limit=30";
+const fetchData = (urlAPI) => {
     return new Promise((resolve, reject) => {
-        const xhttp = new XMLHttpRequest();
-        xhttp.open('GET', url_api, true);
-        xhttp.onreadystatechange = (() => {
-          if(xhttp.readyState === 4){
-            (xhttp.status === 200)
-                ? resolve(JSON.parse(xhttp.responseText))
-                : reject(new Error("Error " + url_api))
+        const request = new XMLHttpRequest();
+        request.open('GET', urlAPI, true);
+        request.onreadystatechange = (() => {
+          if(request.readyState === 4){
+            (request.status === 200)
+                ? resolve(JSON.parse(request.responseText))
+                : reject(new Error("Error " + urlAPI))
           }
         });
-        xhttp.send();
+        request.send();
     });
 }
+
+//Boton de Kusama
+const KSMButton = document.getElementById("KSMbutton");
+const currentUSBox = document.getElementById("hoyUS");
+const currentCLBox = document.getElementById("hoyCL");
+const showPrice = async () => {
+    try {
+        const US1Box = await fetchData(currentURL);
+        currentUSBox.textContent = parseInt(US1Box.price);
+        currentCLBox.textContent = parseInt(US1Box.price * 0.720) + "K";
+        console.log("Hola tarola");
+    } catch (error) {
+        console.error(error);
+    }
+}
+KSMButton.addEventListener('click', showPrice);
+console.log("After");
