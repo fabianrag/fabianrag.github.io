@@ -84,7 +84,7 @@ function changeBox() {
 //FetchData
 const burl = "https://api.binance.com";
 const currentURL = burl + "/api/v3/avgPrice?symbol=KSMUSDT";
-const candlesQuery = burl + "/api/v3/klines?symbol=KSMUSDT&interval=1d&limit=30";
+const candlesURL = burl + "/api/v3/klines?symbol=KSMUSDT&interval=1d&limit=367";
 const fetchData = (urlAPI) => {
     return new Promise((resolve, reject) => {
         const request = new XMLHttpRequest();
@@ -103,13 +103,30 @@ const fetchData = (urlAPI) => {
 //Boton de Kusama
 const KSMButton = document.getElementById("KSMbutton");
 const currentUSBox = document.getElementById("hoyUS");
+const weekUSBox = document.getElementById("1sUS");
+const monthUSBox = document.getElementById("1mUS");
+const anualUSBox = document.getElementById("1aUS");
 const currentCLBox = document.getElementById("hoyCL");
+const weekCLBox = document.getElementById("1sCL");
+const monthCLBox = document.getElementById("1mCL");
+const anualCLBox = document.getElementById("1aCL");
 const showPrice = async () => {
     try {
-        const US1Box = await fetchData(currentURL);
-        currentUSBox.textContent = parseInt(US1Box.price);
-        currentCLBox.textContent = parseInt(US1Box.price * 0.720) + "K";
-        console.log("Hola tarola");
+        const requestCurrent = await fetchData(currentURL);
+        currentUSBox.textContent = parseInt(requestCurrent.price);
+        currentCLBox.textContent = parseInt(requestCurrent.price * 0.720) + "K";
+        const requestCandle = await fetchData(candlesURL);
+        const week = requestCandle[280];
+        const month = requestCandle[250];
+        const anual = requestCandle[190];
+        weekUSBox.textContent = parseInt(week[1]);
+        weekCLBox.textContent = parseInt(week[1] * 0.720) + "K";
+        monthUSBox.textContent = parseInt(month[1]);
+        monthCLBox.textContent = parseInt(month[1] * 0.720) + "K";
+        anualUSBox.textContent = parseInt(anual[1]);
+        anualCLBox.textContent = parseInt(anual[1] * 0.720) + "K";
+        KSMButton.removeEventListener('click', showPrice);
+        console.log("test");
     } catch (error) {
         console.error(error);
     }
