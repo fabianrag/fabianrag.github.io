@@ -1,4 +1,69 @@
-//Botton de abrir login
+/* USER BUTTON */
+
+const userButton = document.querySelector("header .icon");
+const header = document.querySelector("header");
+const loginBuilder = (titleText, buttonText, subtitleText, changeFUNCTION, confirmpass) => {
+    const containerLOGIN = document.createElement('form');
+        const titleLOGIN = document.createElement('h1');
+            titleLOGIN.textContent = titleText;
+            containerLOGIN.appendChild(titleLOGIN);
+        const nameLOGIN = document.createElement('input');
+            nameLOGIN.setAttribute("type", "text");
+            nameLOGIN.setAttribute("placeholder", "Usuario");
+            containerLOGIN.appendChild(nameLOGIN);
+        const passwordLOGIN = document.createElement('input');
+            passwordLOGIN.setAttribute("type", "password");
+            passwordLOGIN.setAttribute("placeholder", "Contraseña");
+            containerLOGIN.appendChild(passwordLOGIN);
+        const buttonLOGIN = document.createElement("input");
+            buttonLOGIN.setAttribute("type", "submit")
+            buttonLOGIN.setAttribute("value", buttonText)
+            buttonLOGIN.setAttribute("class", "button");
+            containerLOGIN.appendChild(buttonLOGIN);
+        const subtitleLOGIN = document.createElement('h2');
+            subtitleLOGIN.textContent = subtitleText;
+            containerLOGIN.appendChild(subtitleLOGIN);
+            subtitleLOGIN.addEventListener('click', changeFUNCTION);
+        if (confirmpass == 1) {
+            const confirmPasswordLOGIN = document.createElement('input');
+            confirmPasswordLOGIN.setAttribute("type", "password");
+            confirmPasswordLOGIN.setAttribute("placeholder", "Confirma tu contraseña");
+            buttonLOGIN.before(confirmPasswordLOGIN);
+        }
+    return containerLOGIN;
+};
+function addREGISTER () {
+    const REGISTER = loginBuilder('Registra tu cuenta', 'Registrarme', 'Iniciar sesión', changeFORM, 1);
+    const FORM = document.querySelector("body > form");
+    FORM.remove();
+    header.after(REGISTER);
+}
+function changeFORM () {
+    const FORM = document.querySelector("body > form");
+    FORM.remove();
+    const LOGIN = loginBuilder('Entra con tu cuenta', 'Iniciar Sesión', 'Registrarme', addREGISTER);
+    header.after(LOGIN);
+}
+function addLOGIN () {
+    const LOGIN = loginBuilder('Entra con tu cuenta', 'Iniciar Sesión', 'Registrarme', addREGISTER);
+    header.after(LOGIN);
+    userButton.removeEventListener('click', addLOGIN);
+    userButton.addEventListener("click", removeFORM);
+}
+function removeFORM () {
+    const FORM = document.querySelector("body > form");
+    FORM.remove();
+    userButton.removeEventListener("click", removeFORM);
+    userButton.addEventListener('click', addLOGIN);
+}
+userButton.addEventListener('click', addLOGIN);
+
+
+
+
+
+
+
 const logSection = document.getElementById('logSection');
 const userContainer = document.getElementById('user');
 const switchButton = document.getElementById('logButton-switch');
@@ -21,45 +86,9 @@ const addCrossButton = () => {
     container.addEventListener('click', addSwitchButton);
     addBox("login", 'Entra con tu cuenta', "iniciarSesion", 'Iniciar Sesión', 'Registrarme');
 };
-switchButton.addEventListener('click', addCrossButton);
 
 //Recuadro de login
-const addBox = (tipo, encabezado, idBoton, action, retorno) => {
-    const container = document.createElement('div');
-    container.id = tipo;
-    container.className = "form";
-    logSection.appendChild(container);
-        const header = document.createElement('h1');
-        const headerText = document.createTextNode(encabezado);
-        container.appendChild(header);
-        header.appendChild(headerText);
-        const form = document.createElement('form');
-        container.appendChild(form);
-            const inputName = document.createElement('input');
-            inputName.setAttribute("type", "text");
-            inputName.setAttribute("placeholder", "Usuario");
-            inputName.className = "input";
-            form.appendChild(inputName);
-            const inputPassword = document.createElement('input');
-            inputPassword.setAttribute("type", "password");
-            inputPassword.setAttribute("placeholder", "Contraseña");
-            inputPassword.className = "input";
-            form.appendChild(inputPassword);
-            const actionButton = document.createElement("BUTTON");
-            actionButton.id = idBoton;
-            form.appendChild(actionButton);
-                const actionText = document.createElement('h1');
-                actionButton.appendChild(actionText);
-                    const action2Text = document.createTextNode(action);
-                    actionText.appendChild(action2Text);
-        const footer = document.createElement('h2');
-        footer.id = "loginFooter";
-        footer.addEventListener('click', changeBox);
-        activeBox = 0;
-        const footerText = document.createTextNode(retorno);
-        footer.appendChild(footerText);
-        container.appendChild(footer);
-};
+
 const addRegisterBox = () => {
     addBox("register", 'Registra tu cuenta', "registrarme", 'Registrarme', 'Iniciar Sesión');
     const inputPassword = document.createElement('input');

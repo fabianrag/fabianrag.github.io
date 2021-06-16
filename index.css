@@ -4,28 +4,76 @@
     margin: 0;
 }
 :root {
-    --primaryColor: #2D6286;
-    --secondaryColor: #aa1a1a;
+    --primaryColor: #008EAA;
+    --secondaryColor: #A7A8A9;
     --background: #E8E2BA;
-    --primaryFontColor: #383838;
+    --primaryFontColor: #514f14;
     --secondaryFontColor: #828282;
     --myWhite: #F8F0E4;
 }
 html {
-    font-family: 'Marvel', sans-serif;
-    font-style: italic;
+    font-family: sans-serif;
     font-size: 67.5%;
     color: var(--primaryFontColor);
 }
-body {  
-    background: linear-gradient(to bottom, #2d6286 0%, #ffffcc 100%);
-}
-main {
+
+/* HEADER */
+
+header {  
+    height: 70px;
     display: flex;
-    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+header section {
+    height: 100%;
+    display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+    flex-direction: column;
+}
+header .icon {
+    background-color: var(--primaryColor);
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+}
+
+/* LOGIN */
+
+body > form {
+    position: absolute;
+    max-width: 300px;
+    display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
+    padding: 15px 20px;
+    margin: 0 auto;
+    border: 3px solid var(--primaryColor);
+    background-color: white;
+    border-bottom-right-radius: 40px;
+}
+body > form .button {
+    border: none;
+    background-color: var(--primaryColor);
+    color: white;
+    padding: 5px;
+    margin: 20px 0 15px 0;
+    border-radius: 20px;
+    font-size: 2.5rem;
+}
+body > form input {
+    text-align:center;
+    color: var(--primaryFontColor);
+}
+
+
+
+
+main {
+    background: linear-gradient(to bottom, #2d6286 0%, #ffffcc 100%);
 }
     h1 {
         font-size: 3rem;
@@ -45,14 +93,13 @@ main {
         font-style: italic;
         font-size: 2rem;
     }
-    img {
+    main img {
         width: 100%;
     }
-    section {
+    main section {
         background-color: var(--myWhite);
         border: 3px solid var(--primaryFontColor);
         border-radius: 20px;
-        margin: 10px;
         padding: 0 10px 10px 10px;
         text-align: center;
         max-width: 355px;
@@ -69,72 +116,10 @@ main {
         outline: none;
         height: 40px;
     }
-            header section {
-                max-width: 100%;
-            }
-            header img {
-                width: 237.22px;
-                padding: 10px 0;
-            }
 
-
-
-
-
-/* logSection*/
-#logSection {
-    position: relative;
-    background-color: transparent;
-    border: 0;
-    padding-top: 35px;
-}
-#logSection div {
-    width: 235px;
-    padding: 0px 17px;
-    box-shadow: 0px -2px 2px rgb(89 73 30 / 49%);
-    border-radius: 25px;
-    background: var(--background);
-    color: var(--primaryFontColor);
-    border: 5px solid var(--secondaryColor);
-}
-
-
-/* user */
-#user {
-    position: absolute;
-    top: -42px;
-    height: 74px;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-}
-#user figure {
-    position: relative;
-    width: 53px;
-    background-color: var(--secondaryColor);
-    box-shadow: 0px -2px 0px rgb(89 73 30 / 49%);
-    border-radius: 26px;
-    padding: 8px;
-    margin: 4px 0px;
-    align-self: center;
-    cursor: pointer;
-}
-#user h1, #user h2 {
-    margin: 0;
-}
-#user .logButton-cross {
-    position: absolute;
-    width: 52px;
-    top: 1px;
-    right: 24px;
-}
 
 
 /* Formularios para el proceso de logIn */
-.form input {
-    font-weight: bolder;
-    text-align: center;
-}
 .form button {
     background: var(--secondaryColor);
     color: var(--myWhite);
@@ -159,7 +144,6 @@ main {
 
 /* CriptoBOX */
 #criptoBox div {
-    width: 100%;
     height: 200px;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
