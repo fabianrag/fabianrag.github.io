@@ -1,11 +1,90 @@
-body,
 html {
   margin: 0;
   padding: 0;
 }
 
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.generalContainer {
+  background-color: white;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+}
+
 .flores {
   width: 100%;
-  height: auto; /* Mantiene la proporción original de la imagen */
-  display: block; /* Elimina el espacio en blanco debajo de la imagen */
+  height: auto;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.soft-arc {
+  position: absolute;
+  top: 200px;
+  left: 200px;
+  right: 200px;
+  bottom: 10px;
+  border-radius: 10px;
+  background: linear-gradient(to bottom right, #d4af37, #f7e1a0);
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hard-arc {
+  border-radius: 10px;
+  width: 99.5%;
+  height: 99.5%;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.soft-arc2 {
+  border-radius: 10px;
+  width: 99%;
+  height: 99%;
+  background: linear-gradient(to bottom right, #d4af37, #f7e1a0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hard-arc2 {
+  border-radius: 10px;
+  width: 99%;
+  height: 99%;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.titulo {
+  font-family: "Great Vibes", cursive;
+  font-size: 40px;
+  margin-bottom: 10px;
+  color: #1a3d7a;
+}
+
+.titulo2 {
+  text-align: center;
+  font-family: "Great Vibes", cursive;
+  font-size: 60px;
+  margin-bottom: 10px;
+  color: #1a3d7a;
+  font-stretch: expanded;
+  letter-spacing: 5px;
 }
