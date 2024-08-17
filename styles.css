@@ -1,0 +1,11 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+
+.flores {
+  width: 100%;
+  height: auto; /* Mantiene la proporción original de la imagen */
+  display: block; /* Elimina el espacio en blanco debajo de la imagen */
+}
