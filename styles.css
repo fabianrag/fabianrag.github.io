@@ -1,43 +1,63 @@
-html {
+html,
+body {
   margin: 0;
   padding: 0;
 }
 
-body {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  background-color: rgb(255, 255, 255);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+a {
+  text-decoration: none;
+  border: none;
+  outline: none;
 }
 
 .generalContainer {
-  background-color: white;
-  text-align: center;
-  padding: 20px;
+  width: 1050px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (max-width: 1050px) {
+  .generalContainer {
+    width: 100%;
+  }
+}
+
+.principalSection {
+  width: 100%;
   position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 600px) {
+  .principalSection {
+    margin-bottom: 80px;
+  }
 }
 
 .flores {
+  position: absolute;
   width: 100%;
-  display: block;
-  margin-bottom: 20px;
+  top: 0;
+  z-index: -1;
 }
 
-.soft-arc {
-  position: absolute;
-  top: 200px;
-  left: 200px;
-  right: 200px;
+.arcContainer {
   border-radius: 10px;
   background: linear-gradient(to bottom right, #d4af37, #f7e1a0e6);
-  z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 40px;
+  margin: 150px 200px 0 200px;
+}
+
+@media (max-width: 950px) {
+  .arcContainer {
+    margin: 14% 10% 0 10%;
+  }
 }
 
 .hard-arc {
@@ -80,6 +100,12 @@ body {
   color: #d4af37;
 }
 
+@media (max-width: 600px) {
+  .titulo {
+    font-size: 30px;
+  }
+}
+
 .titulo2container {
   position: relative;
   display: flex;
@@ -101,18 +127,32 @@ body {
   padding: 0;
 }
 
+@media (max-width: 600px) {
+  .titulo2 {
+    font-size: 60px;
+  }
+}
+
 .titulo21 {
   position: absolute;
   top: 0;
 }
 
 .subtitulo {
+  text-align: center;
   font-family: "Dancing Script", cursive;
   color: #254a8b;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: bold;
-  margin: 5px 0 100px 0;
-  padding: 0 100px;
+  margin-bottom: 10px;
+  padding: 0 10%;
+}
+
+@media (max-width: 800px) {
+  .subtitulo {
+    margin-bottom: 40px;
+    font-size: 18px;
+  }
 }
 
 .dateContainer {
@@ -123,7 +163,17 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px 0;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 800px) {
+  .dateContainer {
+    position: relative;
+    flex-direction: column;
+    padding-top: 40px;
+    font-size: 20px;
+    margin-bottom: 35px;
+  }
 }
 
 .dateBack {
@@ -132,12 +182,21 @@ body {
 
 .date {
   background: white;
-  padding: 15px 40px;
-  margin: 2px 0;
+  padding: 15px 60px;
+  margin: 2px -1px;
+}
+
+@media (max-width: 800px) {
+  .dateBack2 {
+    position: absolute;
+    top: 0;
+  }
 }
 
 .dayContainer {
   padding: 0 10px;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
 .day1 {
@@ -146,8 +205,257 @@ body {
   margin: 0;
 }
 
+@media (max-width: 800px) {
+  .day1 {
+    font-size: 60px;
+  }
+}
+
 .day2 {
   font-size: 20px;
   color: #254a8b;
   margin: 0;
+}
+
+@media (max-width: 800px) {
+  .day2 {
+    font-size: 16px;
+  }
+}
+
+.site {
+  font-family: "Playfair Display", serif;
+  color: #254a8b;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+@media (max-width: 800px) {
+  .site {
+    font-size: 16px;
+  }
+}
+
+.reception {
+  font-family: "Great Vibes", cursive;
+  font-size: 40px;
+  font-weight: 500;
+  margin: 40px 0 100px 0;
+  color: #d4af37;
+}
+
+@media (max-width: 600px) {
+  .reception {
+    font-size: 30px;
+  }
+}
+
+.sectionProps {
+  width: 400px;
+  padding: 40px;
+  margin: 0 200px 10px 200px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 20px;
+  font-family: "Playfair Display", serif;
+}
+
+@media (max-width: 600px) {
+  .sectionProps {
+    width: 100%;
+    margin: 0 auto;
+    padding: 50px 0;
+    border-radius: 0;
+  }
+}
+
+.sectionProps h2 {
+  font-family: "Great Vibes", cursive;
+  font-size: 30px;
+  letter-spacing: 3px;
+  margin: 20px 0 0 0;
+}
+
+.sectionProps a {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+}
+
+.sectionProps p {
+  margin: 4px 5px 0 5px;
+}
+
+.sectionProps .imageContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.sectionProps .column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sectionProps img {
+  width: 50px;
+  margin: 0 10px;
+}
+
+/* Cómo llegar */
+
+.comoLLegarSection {
+  background-color: #e0f2f1;
+  color: #2c3e50;
+  border: 3px solid #2c3e50;
+}
+
+@media (max-width: 600px) {
+  .comoLLegarSection {
+    border: none;
+  }
+}
+
+.comoLLegarSection h2 {
+  color: #bfa145;
+}
+
+.comoLLegarSection a {
+  color: #2c3e50;
+}
+
+.comoLLegarSection .imageContainer {
+  margin: 10px 0;
+}
+
+/* Confirma tu asistencia */
+
+.confirmaAsistenciaSection {
+  background-color: #fdf5e6;
+  color: #3e3e3e;
+  border: 3px solid #8b0000;
+}
+
+@media (max-width: 600px) {
+  .confirmaAsistenciaSection {
+    border: none;
+  }
+}
+
+.confirmaAsistenciaSection h2 {
+  color: #8b0000;
+  margin-top: 10px;
+  font-size: 32px;
+}
+
+.confirmaAsistenciaSection a {
+  color: #3e3e3e;
+}
+
+.confirmaAsistenciaSection img {
+  margin: 0;
+  width: 50px;
+}
+
+.confirmaAsistenciaSection .column {
+  margin: 0 50px;
+}
+
+/* Fotos */
+
+.foto1Section {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+#foto1 {
+  width: 100%;
+  border-radius: 10px;
+  border: 3px solid #bfa145;
+}
+
+@media (max-width: 600px) {
+  .foto1Section {
+    width: 100%;
+    margin: 0 auto;
+  }
+  #foto1 {
+    border: none;
+    border-radius: 0;
+  }
+}
+
+/* Regalos */
+
+.giftSection {
+  background-color: #e6e6fa;
+  color: #2c3e50;
+  border: 3px solid #2c3e50;
+}
+
+@media (max-width: 600px) {
+  .giftSection {
+    border: none;
+  }
+}
+
+.giftSection h2 {
+  color: #ff6f61;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.giftSection .column img {
+  margin-top: 14px;
+  width: 150px;
+  margin-bottom: 16px;
+}
+
+.giftSection span {
+  color: black;
+  font-size: 15px;
+  margin-top: 6px;
+}
+
+/* Dress code */
+
+.dressCodeSection {
+  background-color: #f5e6e8;
+  color: #5d4037;
+  border: 3px solid #5d4037;
+}
+
+@media (max-width: 600px) {
+  .dressCodeSection {
+    border: none;
+  }
+}
+
+.dressCodeSection h2 {
+  color: #8c9a3c;
+  margin-top: 10px;
+  margin-bottom: 4px;
+}
+
+/* Menú */
+
+.menuSection {
+  background-color: #d7e3f4;
+  color: #2e2e2e;
+  border: 3px solid #2e2e2e;
+}
+
+@media (max-width: 600px) {
+  .menuSection {
+    border: none;
+  }
+}
+
+.menuSection h2 {
+  color: #d4a373;
 }
