@@ -1,8 +1,15 @@
+* {
+  box-sizing: border-box;
+}
+
 html,
 body {
   margin: 0;
   padding: 0;
+  background: #132546;
 }
+
+/* Estilos de los elementos */
 
 a {
   text-decoration: none;
@@ -10,114 +17,134 @@ a {
   outline: none;
 }
 
-.generalContainer {
-  width: 1050px;
-  margin: 0 auto;
+h2 {
+  font-family: "Dancing Script", cursive;
+  font-size: 40px;
+  margin: 0 0 10px 0;
+  color: #d4af37;
+}
+
+h3 {
+  font-family: "Playfair Display", serif;
+  color: #254a8b;
+  font-size: 20px;
+  padding-right: 50px;
+  padding-left: 50px;
+  margin: 0 0 10px 0;
+}
+
+@media (max-width: 600px) {
+  h2 {
+    font-size: 30px;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+}
+
+/* Fin de los estilos de los elementos */
+
+/* Clases principales */
+
+.section {
+  width: 650px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+}
+
+.card {
+  padding: 50px 0;
+  width: 550px;
+  text-align: center;
+}
+
+.photo {
+  border: 3px solid #bfa145;
+  width: 400px;
+}
+
+@media (max-width: 650px) {
+  .section {
+    width: 100%;
+    margin-bottom: 0;
+    border-radius: 0;
+    border: none;
+  }
+}
+
+/* Fin de las clases principales */
+
+/* Clases generales */
+
+.icon {
+  margin-bottom: 10px;
+}
+
+.column {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-@media (max-width: 1050px) {
-  .generalContainer {
-    width: 100%;
-  }
-}
-
-.principalSection {
-  width: 100%;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 10px;
-}
-
-@media (max-width: 600px) {
-  .principalSection {
-    margin-bottom: 80px;
-  }
-}
-
-.flores {
-  position: absolute;
-  width: 100%;
-  top: 0;
-  z-index: -1;
-}
-
-.arcContainer {
-  border-radius: 10px;
-  background: linear-gradient(to bottom right, #d4af37, #f7e1a0e6);
+.flex {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 150px 200px 0 200px;
 }
 
-@media (max-width: 950px) {
-  .arcContainer {
-    margin: 14% 10% 0 10%;
-  }
+/* Fin de las clases generales */
+
+/* Invitación */
+
+#invitacion {
+  background: linear-gradient(to bottom right, #f3c52f, #f7e1a0e6);
 }
 
-.hard-arc {
-  border-radius: 10px;
+#bordeIntermedio {
   margin: 1px 0;
   width: 99.5%;
   height: 99.5%;
   background: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  border-radius: 10px;
 }
 
-.soft-arc2 {
+#bordeInterno {
   border-radius: 10px;
   margin: 2px 0;
   width: 99%;
   height: 99%;
-  background: linear-gradient(to bottom right, #d4af37, #f7e1a0bb);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background: linear-gradient(to bottom right, #f1c32a, #f7e1a0bb);
 }
 
-.hard-arc2 {
+#contenido {
+  position: relative;
   border-radius: 10px;
   margin: 4px 0;
+  padding: 50px 0 100px 0;
   width: 98%;
   height: 98%;
   background: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
-.titulo {
-  font-family: "Dancing Script", cursive;
-  font-size: 40px;
-  margin-bottom: 10px;
-  color: #d4af37;
+#contenido h3 {
+  margin: 0;
+  padding: 0;
+  font-weight: 500;
 }
 
-@media (max-width: 600px) {
-  .titulo {
-    font-size: 30px;
-  }
+#contenido h3:last-of-type {
+  margin-bottom: 20px;
 }
 
-.titulo2container {
+#principalTitle {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   margin-top: 25px;
   padding-top: 50px;
+  text-align: center;
 }
 
-.titulo2 {
-  text-align: center;
+#principalTitle p {
   font-family: "Great Vibes", cursive;
   font-size: 90px;
   color: #3565b7;
@@ -127,18 +154,12 @@ a {
   padding: 0;
 }
 
-@media (max-width: 600px) {
-  .titulo2 {
-    font-size: 60px;
-  }
-}
-
-.titulo21 {
+#principalTitle p:first-of-type {
   position: absolute;
   top: 0;
 }
 
-.subtitulo {
+#subtitulo {
   text-align: center;
   font-family: "Dancing Script", cursive;
   color: #254a8b;
@@ -148,314 +169,250 @@ a {
   padding: 0 10%;
 }
 
-@media (max-width: 800px) {
-  .subtitulo {
-    margin-bottom: 40px;
-    font-size: 18px;
-  }
-}
-
-.dateContainer {
+#dateContainer {
   color: #3565b7;
   font-family: "Playfair Display", serif;
   font-size: 25px;
   font-weight: bold;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   margin-bottom: 20px;
 }
 
-@media (max-width: 800px) {
-  .dateContainer {
+.gradient {
+  background: linear-gradient(to right, #f7e1a0bb, #9f8220);
+}
+
+.gradient p {
+  background: white;
+  padding: 15px 60px;
+  margin: 2px -1px;
+}
+
+#dayContainer {
+  padding: 0 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+#dayContainer p:first-of-type {
+  font-size: 90px;
+  padding: 0;
+  margin: 0;
+}
+
+#dayContainer p:last-of-type {
+  font-size: 20px;
+  color: #254a8b;
+  margin: 0;
+}
+
+@media (max-width: 650px) {
+  #invitacion {
+    width: 100%;
+  }
+
+  #contenido h4 {
+    font-size: 30px;
+  }
+
+  #subtitulo {
+    margin-bottom: 40px;
+    font-size: 18px;
+  }
+
+  #principalTitle p {
+    font-size: 60px;
+  }
+
+  #dateContainer {
     position: relative;
     flex-direction: column;
     padding-top: 40px;
     font-size: 20px;
     margin-bottom: 35px;
   }
-}
 
-.dateBack {
-  background: linear-gradient(to right, #f7e1a0bb, #9f8220);
-}
-
-.date {
-  background: white;
-  padding: 15px 60px;
-  margin: 2px -1px;
-}
-
-@media (max-width: 800px) {
-  .dateBack2 {
+  #dateContainer div:first-of-type {
     position: absolute;
     top: 0;
   }
-}
 
-.dayContainer {
-  padding: 0 10px;
-  margin-bottom: 10px;
-  text-align: center;
-}
-
-.day1 {
-  font-size: 90px;
-  padding: 0;
-  margin: 0;
-}
-
-@media (max-width: 800px) {
-  .day1 {
+  #dayContainer p:first-of-type {
     font-size: 60px;
   }
-}
 
-.day2 {
-  font-size: 20px;
-  color: #254a8b;
-  margin: 0;
-}
-
-@media (max-width: 800px) {
-  .day2 {
+  #dayContainer p:last-of-type {
     font-size: 16px;
   }
 }
 
-.site {
-  font-family: "Playfair Display", serif;
-  color: #254a8b;
-  margin: 0;
-  padding: 0;
-  font-size: 20px;
-  font-weight: 500;
-}
-
-@media (max-width: 800px) {
-  .site {
-    font-size: 16px;
-  }
-}
-
-.reception {
-  font-family: "Great Vibes", cursive;
-  font-size: 40px;
-  font-weight: 500;
-  margin: 40px 0 100px 0;
-  color: #d4af37;
-}
-
-@media (max-width: 600px) {
-  .reception {
-    font-size: 30px;
-  }
-}
-
-.sectionProps {
-  width: 400px;
-  padding: 40px;
-  margin: 0 200px 10px 200px;
-  border-radius: 10px;
-  text-align: center;
-  font-size: 20px;
-  font-family: "Playfair Display", serif;
-}
-
-@media (max-width: 600px) {
-  .sectionProps {
-    width: 100%;
-    margin: 0 auto;
-    padding: 50px 0;
-    border-radius: 0;
-  }
-}
-
-.sectionProps h2 {
-  font-family: "Great Vibes", cursive;
-  font-size: 30px;
-  letter-spacing: 3px;
-  margin: 20px 0 0 0;
-}
-
-.sectionProps a {
-  font-size: 20px;
-  display: flex;
-  align-items: center;
-  font-family: "Playfair Display", serif;
-  font-weight: bold;
-}
-
-.sectionProps p {
-  margin: 4px 5px 0 5px;
-}
-
-.sectionProps .imageContainer {
-  display: flex;
-  justify-content: center;
-}
-
-.sectionProps .column {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.sectionProps img {
-  width: 50px;
-  margin: 0 10px;
-}
+/* Fin de la sección de invitación */
 
 /* Cómo llegar */
 
-.comoLLegarSection {
+#llegar {
   background-color: #e0f2f1;
-  color: #2c3e50;
   border: 3px solid #2c3e50;
 }
 
-@media (max-width: 600px) {
-  .comoLLegarSection {
-    border: none;
-  }
-}
-
-.comoLLegarSection h2 {
+#llegar h2 {
   color: #bfa145;
 }
 
-.comoLLegarSection a {
+#llegar h3,
+#llegar a {
   color: #2c3e50;
 }
 
-.comoLLegarSection .imageContainer {
-  margin: 10px 0;
-}
+/* Fin de la sección de como llegar */
 
 /* Confirma tu asistencia */
 
-.confirmaAsistenciaSection {
+#confirma {
   background-color: #fdf5e6;
-  color: #3e3e3e;
   border: 3px solid #8b0000;
 }
 
-@media (max-width: 600px) {
-  .confirmaAsistenciaSection {
-    border: none;
-  }
-}
-
-.confirmaAsistenciaSection h2 {
-  color: #8b0000;
-  margin-top: 10px;
-  font-size: 32px;
-}
-
-.confirmaAsistenciaSection a {
+#confirma h3 {
   color: #3e3e3e;
+  margin-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
 }
 
-.confirmaAsistenciaSection img {
-  margin: 0;
-  width: 50px;
+#confirma h2 {
+  color: #8b0000;
+  margin-bottom: 15px;
 }
 
-.confirmaAsistenciaSection .column {
-  margin: 0 50px;
-}
-
-/* Fotos */
-
-.foto1Section {
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: center;
-}
-
-#foto1 {
+#confirma .flex {
   width: 100%;
-  border-radius: 10px;
-  border: 3px solid #bfa145;
+  justify-content: space-around;
 }
 
-@media (max-width: 600px) {
-  .foto1Section {
-    width: 100%;
-    margin: 0 auto;
-  }
-  #foto1 {
-    border: none;
-    border-radius: 0;
-  }
+#confirma .column {
+  margin: 0;
+  padding: 0;
 }
+
+/* Fin de la sección confirma */
 
 /* Regalos */
 
-.giftSection {
+#gift {
   background-color: #e6e6fa;
-  color: #2c3e50;
   border: 3px solid #2c3e50;
 }
 
-@media (max-width: 600px) {
-  .giftSection {
-    border: none;
-  }
-}
-
-.giftSection h2 {
+#gift h2 {
   color: #ff6f61;
-  margin-top: 10px;
-  margin-bottom: 10px;
 }
 
-.giftSection .column img {
+#gift h3 {
+  color: #2c3e50;
+}
+
+#gift .column img {
   margin-top: 14px;
   width: 150px;
   margin-bottom: 16px;
 }
 
-.giftSection span {
+#gift span {
   color: black;
   font-size: 15px;
   margin-top: 6px;
 }
 
+/* Fin de la sección gift */
+
 /* Dress code */
 
-.dressCodeSection {
+#dress {
+  position: relative;
   background-color: #f5e6e8;
-  color: #5d4037;
   border: 3px solid #5d4037;
 }
 
-@media (max-width: 600px) {
-  .dressCodeSection {
-    border: none;
-  }
+#dress h2 {
+  color: #8c9a3c;
 }
 
-.dressCodeSection h2 {
-  color: #8c9a3c;
-  margin-top: 10px;
-  margin-bottom: 4px;
+#dress h3 {
+  color: #5d4037;
 }
+
+/* Fin de la sección dress */
 
 /* Menú */
 
-.menuSection {
+#menu {
   background-color: #d7e3f4;
-  color: #2e2e2e;
   border: 3px solid #2e2e2e;
 }
 
-@media (max-width: 600px) {
-  .menuSection {
+#menu h2 {
+  color: #d4a373;
+}
+
+#menu h3 {
+  color: #2e2e2e;
+}
+
+/* Fin de la sección menu */
+
+/* Sección de version movil */
+
+@media (max-width: 650px) {
+  #menu,
+  #dress,
+  #gift,
+  #confirma,
+  #llegar {
     border: none;
   }
 }
 
-.menuSection h2 {
-  color: #d4a373;
+/* Fin de la sección movil */
+
+/* Flor */
+
+#florTR {
+  position: absolute;
+  top: -50px;
+  right: -50px;
 }
+
+#florBL {
+  position: absolute;
+  bottom: -200px;
+  left: -60px;
+}
+
+#florDress {
+  position: absolute;
+  bottom: -150px;
+  left: 200px;
+  width: 350px;
+}
+
+@media (max-width: 650px) {
+  #florTR {
+    top: 0px;
+    right: 0px;
+    width: 200px;
+  }
+
+  #florBL {
+    bottom: -100px;
+    left: -35px;
+    width: 200px;
+  }
+
+  #florDress {
+    bottom: -100px;
+    left: 160px;
+    width: 250px;
+  }
+}
+
+/* Fin de la sección flor */
