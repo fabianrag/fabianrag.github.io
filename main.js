@@ -1,30 +1,53 @@
-const targetDate = new Date("Oct 19, 2024 00:00:00").getTime();
+/**
+ * main.js - Versión 1.1 (Refactor)
+ * --------------------------------
+ * Mejora y organización del contador regresivo:
+ * - Se usa Date.now() en lugar de new Date().getTime().
+ * - Se define una función 'updateCountdown' que calcula y muestra el tiempo faltante.
+ * - Se almacena el intervalo en una variable para poder limpiarlo.
+ * - Se emplea textContent en lugar de innerHTML, para mayor eficiencia.
+ */
 
-const countdownFunction = () =>
-  setInterval(function () {
-    const now = new Date().getTime();
-    let distance = targetDate - now;
+// Encerramos todo en una IIFE para evitar contaminar el ámbito global
+(() => {
+  const TARGET_DATE_STRING = "Oct 19, 2024 00:00:00";
+  const targetDate = new Date(TARGET_DATE_STRING).getTime();
 
-    let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    let hours = Math.floor(
+  // Función que actualiza los elementos del DOM con el tiempo restante
+  function updateCountdown() {
+    const now = Date.now(); // Tiempo actual en milisegundos
+    const distance = targetDate - now;
+
+    // Si la fecha ya pasó
+    if (distance <= 0) {
+      clearInterval(countdownInterval);
+      document.getElementById("countdownTitle").textContent =
+        "¡Es hoy!¡Es hoy!";
+
+      // Recorremos cada campo y lo ponemos a 0
+      ["dias", "horas", "minutos", "segundos"].forEach((id) => {
+        document.getElementById(id).textContent = 0;
+      });
+      return; // Salimos de la función
+    }
+
+    // Cálculo de Días, Horas, Minutos y Segundos faltantes
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(
       (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
     );
-    let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    document.getElementById("dias").innerHTML = days;
-    document.getElementById("horas").innerHTML = hours;
-    document.getElementById("minutos").innerHTML = minutes;
-    document.getElementById("segundos").innerHTML = seconds;
+    // Inyección de valores al DOM
+    document.getElementById("dias").textContent = days;
+    document.getElementById("horas").textContent = hours;
+    document.getElementById("minutos").textContent = minutes;
+    document.getElementById("segundos").textContent = seconds;
+  }
 
-    if (distance < 0) {
-      clearInterval(countdownFunction);
-      document.getElementById("countdownTitle").innerHTML = "¡Es hoy!¡Es hoy!";
-      document.getElementById("dias").innerHTML = 0;
-      document.getElementById("horas").innerHTML = 0;
-      document.getElementById("minutos").innerHTML = 0;
-      document.getElementById("segundos").innerHTML = 0;
-    }
-  }, 1000);
-
-countdownFunction();
+  // Creamos un intervalo que se ejecute cada segundo
+  const countdownInterval = setInterval(updateCountdown, 1000);
+  // Llamamos una vez para actualizar al instante (no esperar 1 seg)
+  updateCountdown();
+})();

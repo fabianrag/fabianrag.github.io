@@ -1,3 +1,6 @@
+/* =========================================
+   GLOBAL RESETS Y FUENTES
+   ========================================= */
 * {
   box-sizing: border-box;
 }
@@ -9,8 +12,9 @@ body {
   background: #132546;
 }
 
-/* Estilos de los elementos */
-
+/* =========================================
+     LINKS Y TEXTO
+     ========================================= */
 a {
   text-decoration: none;
   border: none;
@@ -28,25 +32,26 @@ h3 {
   font-family: "Playfair Display", serif;
   color: #254a8b;
   font-size: 20px;
-  padding-right: 50px;
-  padding-left: 50px;
   margin: 0 0 10px 0;
+  padding: 0 50px;
 }
 
+/* =========================================
+     ESTILOS RESPONSIVE
+     ========================================= */
 @media (max-width: 600px) {
   h2 {
     font-size: 30px;
   }
-
   h3 {
     font-size: 18px;
+    padding: 0 30px;
   }
 }
 
-/* Fin de los estilos de los elementos */
-
-/* Clases principales */
-
+/* =========================================
+     CLASES GENERALES / UTILITARIAS
+     ========================================= */
 .section {
   width: 650px;
   margin-bottom: 30px;
@@ -54,28 +59,15 @@ h3 {
 }
 
 .card {
-  padding: 50px 0;
   width: 550px;
+  padding: 50px 0;
   text-align: center;
 }
 
 .photo {
-  border: 3px solid #bfa145;
   width: 400px;
+  border: 3px solid #bfa145;
 }
-
-@media (max-width: 650px) {
-  .section {
-    width: 100%;
-    margin-bottom: 0;
-    border-radius: 0;
-    border: none;
-  }
-}
-
-/* Fin de las clases principales */
-
-/* Clases generales */
 
 .icon {
   margin-bottom: 10px;
@@ -93,14 +85,24 @@ h3 {
   align-items: center;
 }
 
-/* Fin de las clases generales */
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 650px) {
+  .section {
+    width: 100%;
+    margin-bottom: 0;
+    border-radius: 0;
+    border: none;
+  }
+}
 
-/* Invitación */
-
+/* =========================================
+     SECCIÓN INVITACIÓN
+     ========================================= */
 #invitacion {
   background: linear-gradient(to bottom right, #f3c52f, #f7e1a0e6);
 }
 
+/* Bordes concéntricos (marco de invitación) */
 #bordeIntermedio {
   margin: 1px 0;
   width: 99.5%;
@@ -110,33 +112,34 @@ h3 {
 }
 
 #bordeInterno {
-  border-radius: 10px;
   margin: 2px 0;
   width: 99%;
   height: 99%;
   background: linear-gradient(to bottom right, #f1c32a, #f7e1a0bb);
+  border-radius: 10px;
 }
 
 #contenido {
   position: relative;
-  border-radius: 10px;
   margin: 4px 0;
-  padding: 50px 0 100px 0;
   width: 98%;
   height: 98%;
+  padding: 50px 0 100px;
   background: white;
+  border-radius: 10px;
 }
 
+/* Títulos y texto en el contenido */
 #contenido h3 {
-  margin: 0;
-  padding: 0;
   font-weight: 500;
+  margin-bottom: 10px;
 }
 
 #contenido h3:last-of-type {
   margin-bottom: 20px;
 }
 
+/* Título principal */
 #principalTitle {
   position: relative;
   margin-top: 25px;
@@ -148,7 +151,6 @@ h3 {
   font-family: "Great Vibes", cursive;
   font-size: 90px;
   color: #3565b7;
-  font-stretch: expanded;
   letter-spacing: 5px;
   margin: 0;
   padding: 0;
@@ -159,6 +161,7 @@ h3 {
   top: 0;
 }
 
+/* Subtítulo debajo del título principal */
 #subtitulo {
   text-align: center;
   font-family: "Dancing Script", cursive;
@@ -169,12 +172,16 @@ h3 {
   padding: 0 10%;
 }
 
+/* Fecha del evento: SABADO - 19 06:30 PM - OCTUBRE */
 #dateContainer {
   color: #3565b7;
   font-family: "Playfair Display", serif;
   font-size: 25px;
   font-weight: bold;
   margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .gradient {
@@ -183,19 +190,19 @@ h3 {
 
 .gradient p {
   background: white;
-  padding: 15px 60px;
   margin: 2px -1px;
+  padding: 15px 60px;
 }
 
+/* Día y hora */
 #dayContainer {
-  padding: 0 10px;
   margin-bottom: 10px;
   text-align: center;
+  padding: 0 10px;
 }
 
 #dayContainer p:first-of-type {
   font-size: 90px;
-  padding: 0;
   margin: 0;
 }
 
@@ -205,11 +212,8 @@ h3 {
   margin: 0;
 }
 
+/* Ajustes responsivos para .invitacion */
 @media (max-width: 650px) {
-  #invitacion {
-    width: 100%;
-  }
-
   #contenido h4 {
     font-size: 30px;
   }
@@ -245,10 +249,45 @@ h3 {
   }
 }
 
-/* Fin de la sección de invitación */
+/* =========================================
+     SECCIÓN CUENTA REGRESIVA
+     ========================================= */
+#countdown {
+  font-family: "Dancing Script", cursive;
+  background-color: #1c2541;
+  border: 2px solid #ffd700;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  padding: 10px;
+}
 
-/* Cómo llegar */
+#countdownTitle {
+  margin: 0 0 20px 0;
+  font-size: 38px;
+  font-weight: bold;
+  color: #ffd700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
 
+#countdown h3 {
+  color: #ffd700;
+  margin: 10px 0 0;
+}
+
+#countdown span {
+  font-weight: bold;
+  font-size: 36px;
+  color: #ffd700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#countdown > div {
+  width: 100%;
+  justify-content: space-around;
+}
+
+/* =========================================
+     SECCIÓN CÓMO LLEGAR
+     ========================================= */
 #llegar {
   background-color: #e0f2f1;
   border: 3px solid #2c3e50;
@@ -267,13 +306,17 @@ h3 {
   margin-right: 20px;
 }
 
-/* Fin de la sección de como llegar */
-
-/* Confirma tu asistencia */
-
+/* =========================================
+     SECCIÓN CONFIRMA TU ASISTENCIA
+     ========================================= */
 #confirma {
   background-color: #fdf5e6;
   border: 3px solid #8b0000;
+}
+
+#confirma h2 {
+  color: #8b0000;
+  margin-bottom: 15px;
 }
 
 #confirma h3 {
@@ -281,11 +324,6 @@ h3 {
   margin-bottom: 0;
   padding-left: 0;
   padding-right: 0;
-}
-
-#confirma h2 {
-  color: #8b0000;
-  margin-bottom: 15px;
 }
 
 #confirma .flex {
@@ -298,10 +336,14 @@ h3 {
   padding: 0;
 }
 
-/* Fin de la sección confirma */
+/* =========================================
+     FOTOGRAFÍAS
+     ========================================= */
+/* .photo (ya definido arriba) con .section es suficiente */
 
-/* Regalos */
-
+/* =========================================
+     SECCIÓN REGALOS
+     ========================================= */
 #gift {
   background-color: #e6e6fa;
   border: 3px solid #2c3e50;
@@ -327,10 +369,9 @@ h3 {
   margin-top: 6px;
 }
 
-/* Fin de la sección gift */
-
-/* Dress code */
-
+/* =========================================
+     SECCIÓN DRESS CODE
+     ========================================= */
 #dress {
   position: relative;
   background-color: #f5e6e8;
@@ -345,10 +386,9 @@ h3 {
   color: #5d4037;
 }
 
-/* Fin de la sección dress */
-
-/* Menú */
-
+/* =========================================
+     SECCIÓN MENÚ
+     ========================================= */
 #menu {
   background-color: #d7e3f4;
   border: 3px solid #2e2e2e;
@@ -362,24 +402,9 @@ h3 {
   color: #2e2e2e;
 }
 
-/* Fin de la sección menu */
-
-/* Sección de version movil */
-
-@media (max-width: 650px) {
-  #menu,
-  #dress,
-  #gift,
-  #confirma,
-  #llegar {
-    border: none;
-  }
-}
-
-/* Fin de la sección movil */
-
-/* Flor */
-
+/* =========================================
+     IMÁGENES FLORALES / POSICIONAMIENTO
+     ========================================= */
 #florTR {
   position: absolute;
   top: -5px;
@@ -400,63 +425,30 @@ h3 {
   width: 350px;
 }
 
+/* Ajustes responsivos */
 @media (max-width: 650px) {
   #florTR {
-    top: 0px;
-    right: 0px;
+    top: 0;
+    right: 0;
     width: 200px;
   }
-
   #florBL {
     bottom: -100px;
     left: -35px;
     width: 200px;
   }
-
   #florDress {
     bottom: -100px;
     left: 160px;
     width: 250px;
   }
+
+  /* Secciones con borde en desktop, sin borde en mobile */
+  #menu,
+  #dress,
+  #gift,
+  #confirma,
+  #llegar {
+    border: none;
+  }
 }
-
-/* Fin de la sección flor */
-
-/* Countdown */
-
-#countdown {
-  font-family: "Dancing Script", cursive;
-  background-color: #1c2541;
-  border: 2px solid #ffd700;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  padding: 10px;
-}
-
-#countdown h3 {
-  color: #ffd700;
-  margin: 10px 0 0 0;
-  padding: 0;
-}
-
-#countdownTitle {
-  margin: 0 0 20px 0;
-  font-size: 38px;
-  font-weight: bold;
-  color: #ffd700;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-#countdown span {
-  font-weight: bold;
-  font-size: 36px;
-  color: #ffd700;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-#countdown > div {
-  width: 100%;
-  justify-content: space-around;
-}
-
-
-/* Fin de la sección countdown */
