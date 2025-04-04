@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import GallerySection from "../components/GallerySection.astro";
+---
+
+<!-- Enlaza tu script externo (o podrías poner un <script> inline, etc.) -->
+<script type="module" src="/scripts/galleryScript.js"></script>
+
+<BaseLayout title="Galería de Fotos">
+  <h1>Galería de Fotos</h1>
+  <p>Explora los momentos más especiales del matrimonio.</p>
+
+  <GallerySection
+    title="Preparativos"
+    images={[
+      "/photos/resized/1.jpg",
+      "/photos/resized/2.jpg",
+      "/photos/resized/3.jpg",
+    ]}
+  />
+
+  <!-- Más secciones... -->
+</BaseLayout>

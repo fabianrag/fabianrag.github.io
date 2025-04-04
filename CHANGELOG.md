@@ -50,4 +50,39 @@ Refactorizar y simplificar la estructura de archivos, manteniendo el mismo dise�
 
 > **Nota:** Mantén este archivo actualizado cada vez que hagas una nueva versión. Agrega fecha, objetivos principales y la lista de cambios realizados. ¡Así llevarás un control claro de la evolución del proyecto!
 
+## Versión 1.2 (Galería y ajustes visuales)
+
+**Fecha:** 2025-04-04
+
+**Objetivo:**  
+Implementar la nueva galería de fotos y preparar la estructura para futuras secciones como agradecimientos.
+
+### Cambios Principales
+
+1. **Galería de Fotos (prototipo funcional):**
+
+   - Componente `GallerySection.astro` con soporte modular para múltiples secciones.
+   - Modal funcional para cada sección con navegación de imágenes (← →).
+   - Botón de “Me gusta” con persistencia en `localStorage` y diseño mejorado.
+   - Eliminada la caja de comentarios del modal.
+
+2. **Estilizado:**
+
+   - Mejoras visuales en miniaturas, centrado de secciones y estilos responsivos.
+   - Ajustes en `styles.css` para secciones `.photo`, `.section`, `.card`.
+
+3. **Infraestructura:**
+
+   - Se prepara el sistema para carga de múltiples imágenes desde `/public/photos`.
+   - Preparación de estructura para separar componentes y lógica (`galleryScript.js`).
+
+4. **Limpieza:**
+   - Eliminación de lógica no usada (comentarios, formularios).
+   - Se cierra la etapa de prototipado con una sola imagen (`1.jpg`) para galería inicial.
+
+### Resultado
+
+- Galería funcional, modular y lista para escalar con más fotos y secciones.
+- Sitio visualmente más coherente y con mejor experiencia en desktop.
+
 ---

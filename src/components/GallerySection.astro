@@ -1,0 +1,23 @@
+---
+interface Props {
+  title: string;
+  images: string[];
+}
+const { title, images } = Astro.props;
+---
+
+<section class="gallery-section">
+  <h2>{title}</h2>
+  <div class="thumbnails">
+    {images.map((src) => <img src={src} alt={title} class="thumbnail" />)}
+  </div>
+
+  <div class="modal hidden">
+    <button class="close-btn">X</button>
+    <button class="arrow arrow-left">←</button>
+    <img src={images[0]} alt="Foto grande" class="modal-img" />
+    <button class="arrow arrow-right">→</button>
+
+    <div class="like-btn">Me gusta</div>
+  </div>
+</section>

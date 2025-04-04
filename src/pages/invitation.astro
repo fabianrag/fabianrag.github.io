@@ -1,0 +1,29 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Invitation from "../components/Invitation.astro";
+import HowToGetThere from "../components/HowToGetThere.astro";
+import DressCode from "../components/DressCode.astro";
+import Menu from "../components/Menu.astro";
+import Photo from "../components/Photo.astro";
+---
+
+<BaseLayout title="Invitación de Boda">
+  <Invitation />
+
+  <Photo
+    src="/images/Foto1.jpg"
+    alt="Foto de los novios"
+    className="section photo"
+  />
+
+  <HowToGetThere />
+
+  <Photo
+    src="/images/Foto2.jpg"
+    alt="Foto de los novios"
+    className="section photo"
+  />
+
+  <DressCode />
+  <Menu />
+</BaseLayout>

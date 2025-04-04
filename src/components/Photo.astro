@@ -1,0 +1,12 @@
+---
+interface Props {
+  src: string;
+  alt?: string;
+  className?: string;
+}
+
+// Recibir props
+const { src, alt = "", className = "" }: Props = Astro.props;
+---
+
+<img src={src} alt={alt} class={className} />
