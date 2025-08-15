@@ -145,3 +145,22 @@ const queue = items.slice(initialCount);
   }
   .btn-more:hover { background: #f5f5f5; }
 </style>
+
+<!-- PhotoSwipe desde CDN para asegurar init en el navegador -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe.css">
+<script type="module">
+  import PhotoSwipeLightbox from 'https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe-lightbox.esm.min.js';
+  import PhotoSwipe from 'https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe.esm.min.js';
+
+  // Usa el mismo id que tiene tu contenedor de la galería
+  const lb = new PhotoSwipeLightbox({
+    gallery: '#{id}',           // <-- id del <div id={id} class="pswp-gallery ...">
+    children: 'a',
+    pswpModule: () => PhotoSwipe,
+    showHideAnimationType: 'zoom',
+    wheelToZoom: true,
+    preload: [1, 2],
+    secondaryZoomLevel: 1.5
+  });
+  lb.init();
+</script>
