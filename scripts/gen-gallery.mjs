@@ -4,10 +4,9 @@ import path from 'node:path';
 import sharp from 'sharp';
 
 // Cambia si alojas fuera (p. ej. Supabase/CDN). Mantén la barra final.
-const BASE_URL = process.env.GALLERY_BASE_URL ?? '/photos/';
-
-const MOBILE_DIR = 'public/photos/mobile';
-const DESKTOP_DIR = 'public/photos/desktop';
+const BASE_URL = process.env.GALLERY_BASE_URL ?? '/images/';
+const MOBILE_DIR = 'public/images/mobile';
+const DESKTOP_DIR = 'public/images/desktop';
 
 const mobileFiles = await fg([`${MOBILE_DIR}/*.webp`], { dot: false });
 const desktopFiles = await fg([`${DESKTOP_DIR}/*.webp`], { dot: false });

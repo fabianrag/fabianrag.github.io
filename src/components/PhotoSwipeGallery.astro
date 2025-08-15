@@ -123,11 +123,10 @@ const queue = items.slice(initialCount);
   moreBtn?.addEventListener('click', renderChunk);
 </script>
 
-<!-- IMPORTANTE: este es el módulo externo que inicializa PhotoSwipe -->
-<script
-  type="module"
-  src={Astro.resolve('../scripts/photoswipe-init.ts')}
-></script>
+<script type="module">
+  import '../scripts/photoswipe-init.ts';
+</script>
+
 
 <style>
   .thumbnail-grid {
