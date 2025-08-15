@@ -1,6 +1,4 @@
 ---
-import 'photoswipe/style.css';
-
 interface Item {
   original: string;
   thumbnail: string;
@@ -70,15 +68,14 @@ const queue = items.slice(initialCount);
     </div>
   )}
 
-  <!-- Cola de ítems para el “Mostrar más” -->
+  <!-- Cola para "Mostrar más" -->
   <script type="application/json" id={`${id}-queue`}>
     {JSON.stringify(queue)}
   </script>
 </section>
 
+<!-- Mostrar más (NO importa que sea inline; no hace imports) -->
 <script type="module">
-  import PhotoSwipeLightbox from 'photoswipe/lightbox';
-
   const gallery = document.getElementById("#{id}");
   const moreBtn = document.getElementById("#{id}-more");
   const queueEl = document.getElementById("#{id}-queue");
@@ -94,7 +91,7 @@ const queue = items.slice(initialCount);
     if (!chunk.length) return;
 
     const frag = document.createDocumentFragment();
-    chunk.forEach((it, i) => {
+    chunk.forEach((it) => {
       const a = document.createElement('a');
       a.href = it.original;
       a.setAttribute('data-pswp-width', String(it.width));
@@ -124,23 +121,15 @@ const queue = items.slice(initialCount);
   }
 
   moreBtn?.addEventListener('click', renderChunk);
-
-  // Inicializa PhotoSwipe (funciona también con ítems añadidos luego)
-  const lb = new PhotoSwipeLightbox({
-    gallery: '#{id}',
-    children: 'a',
-    pswpModule: () => import('photoswipe'),
-    showHideAnimationType: 'zoom',
-    wheelToZoom: true,
-    preload: [1, 2],
-    secondaryZoomLevel: 1.5,
-    paddingFn: () => ({ top: 20, bottom: 20, left: 16, right: 16 })
-  });
-  lb.init();
 </script>
 
+<!-- IMPORTANTE: este es el módulo externo que inicializa PhotoSwipe -->
+<script
+  type="module"
+  src={Astro.resolve('../scripts/photoswipe-init.ts')}
+></script>
+
 <style>
-  /* Opcional: estilos básicos si no los tienes ya */
   .thumbnail-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
