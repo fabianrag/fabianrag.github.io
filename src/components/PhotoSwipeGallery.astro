@@ -106,11 +106,6 @@ const queue = items.slice(initialCount);
   moreBtn?.addEventListener('click', renderChunk);
 </script>
 
-<!-- IMPORTANTE: importar el inicializador para que Vite lo empaquete -->
-<script type="module">
-  import '../scripts/photoswipe-init.ts';
-</script>
-
 <style>
   .thumbnail-grid {
     display: grid;
@@ -125,3 +120,21 @@ const queue = items.slice(initialCount);
   }
   .btn-more:hover { background: #f5f5f5; }
 </style>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe.css">
+
+<script type="module" define:vars={{ id }}>
+  import PhotoSwipeLightbox from 'https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe-lightbox.esm.min.js';
+  import PhotoSwipe from 'https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe.esm.min.js';
+
+  const lb = new PhotoSwipeLightbox({
+    gallery: '#' + id,   // usa el id real del contenedor
+    children: 'a',
+    pswpModule: () => PhotoSwipe,
+    showHideAnimationType: 'zoom',
+    wheelToZoom: true,
+    preload: [1, 2],
+    secondaryZoomLevel: 1.5
+  });
+  lb.init();
+</script>

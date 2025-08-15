@@ -51,11 +51,11 @@ const {
   </div>
 </section>
 
-<script type="module">
+<script type="module" define:vars={{ id }}>
   import PhotoSwipeLightbox from "photoswipe/lightbox";
 
   const lb = new PhotoSwipeLightbox({
-    gallery: "#{id}",
+    gallery: "#" + id,
     children: "a",
     pswpModule: () => import("photoswipe"),
     showHideAnimationType: "zoom",
