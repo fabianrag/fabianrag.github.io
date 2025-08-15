@@ -7,103 +7,57 @@ interface Item {
   caption?: string;
   alt?: string;
 }
-const {
-  title = 'Galería',
-  id = 'pswp-gallery',
-  items = [],
-  initial = 60,
-  step = 60
-} = Astro.props;
 
-const initialCount = Math.min(initial, items.length);
-const firstBatch = items.slice(0, initialCount);
-const queue = items.slice(initialCount);
+const { title = "Galería", id = "pswp-gallery", items = [] } = Astro.props;
 ---
 
 <section class="gallery-section">
   {title && <h2>{title}</h2>}
 
   <div id={id} class="thumbnail-grid pswp-gallery">
-    {firstBatch.map((it, i) => (
-      <a
-        href={it.original}
-        data-pswp-width={it.width}
-        data-pswp-height={it.height}
-        data-pswp-caption={it.caption ?? ''}
-        aria-label={it.alt ?? it.caption ?? `Foto ${i + 1}`}
-      >
-        <img
-          src={it.thumbnail}
-          alt={it.alt ?? it.caption ?? `Foto ${i + 1}`}
-          loading="lazy"
-          decoding="async"
-          class="thumbnail"
-          srcset={`${it.thumbnail} 800w, ${it.original} 1098w`}
-          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-        />
-      </a>
-    ))}
+    {
+      items.map((it, i) => (
+        <a
+          href={it.original}
+          data-pswp-width={it.width}
+          data-pswp-height={it.height}
+          data-pswp-caption={it.caption ?? ""}
+          aria-label={it.alt ?? it.caption ?? `Foto ${i + 1}`}
+        >
+          <img
+            src={it.thumbnail}
+            alt={it.alt ?? it.caption ?? `Foto ${i + 1}`}
+            loading="lazy"
+            decoding="async"
+            class="thumbnail"
+            srcset={`${it.thumbnail} 800w, ${it.original} 1098w`}
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+          />
+        </a>
+      ))
+    }
   </div>
-
-  {queue.length > 0 && (
-    <div class="gallery-actions">
-      <button
-        id={`${id}-more`}
-        class="btn-more"
-        type="button"
-        data-step={step}
-        aria-label={`Mostrar ${Math.min(step, queue.length)} más fotos`}
-      >
-        Mostrar más
-      </button>
-    </div>
-  )}
-
-  <script type="application/json" id={`${id}-queue`}>
-    {JSON.stringify(queue)}
-  </script>
 </section>
 
-<!-- Mostrar más (usa define:vars para inyectar variables reales, sin '#{id}') -->
-<script type="module" define:vars={{ id, step }}>
-  const gallery = document.getElementById(id);
-  const moreBtn = document.getElementById(`${id}-more`);
-  const queueEl = document.getElementById(`${id}-queue`);
+<!-- Inicializa PhotoSwipe (CDN) -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe.css"
+/>
+<script type="module" define:vars={{ id }}>
+  import PhotoSwipeLightbox from "https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe-lightbox.esm.min.js";
+  import PhotoSwipe from "https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe.esm.min.js";
 
-  const stepCount = Number(step || 60);
-  let queue = [];
-  if (queueEl) {
-    try { queue = JSON.parse(queueEl.textContent || "[]"); } catch {}
-  }
-
-  function renderChunk() {
-    const chunk = queue.splice(0, stepCount);
-    if (!chunk.length) return;
-
-    const frag = document.createDocumentFragment();
-    for (const it of chunk) {
-      const a = document.createElement('a');
-      a.href = it.original;
-      a.setAttribute('data-pswp-width', String(it.width));
-      a.setAttribute('data-pswp-height', String(it.height));
-      if (it.caption) a.setAttribute('data-pswp-caption', it.caption);
-      a.setAttribute('aria-label', it.alt || it.caption || 'Foto');
-
-      const img = document.createElement('img');
-      img.src = it.thumbnail;
-      img.alt = it.alt || it.caption || 'Foto';
-      img.loading = 'lazy';
-      img.decoding = 'async';
-      img.className = 'thumbnail';
-      img.setAttribute('srcset', `${it.thumbnail} 800w, ${it.original} 1098w`);
-      img.setAttribute('sizes', '(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw');
-
-      a.appendChild(img);
-      frag.appendChild(a);
-    }
-    gallery?.appendChild(frag);
-  }
-  moreBtn?.addEventListener('click', renderChunk);
+  const lb = new PhotoSwipeLightbox({
+    gallery: "#" + id,
+    children: "a",
+    pswpModule: () => PhotoSwipe,
+    showHideAnimationType: "zoom",
+    wheelToZoom: true,
+    preload: [1, 2],
+    secondaryZoomLevel: 1.5,
+  });
+  lb.init();
 </script>
 
 <style>
@@ -112,29 +66,10 @@ const queue = items.slice(initialCount);
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 12px;
   }
-  .thumbnail { width: 100%; height: auto; display: block; border-radius: 8px; }
-  .gallery-actions { display: flex; justify-content: center; margin-top: 1rem; }
-  .btn-more {
-    padding: .6rem 1rem; border: 1px solid #ddd; border-radius: .5rem;
-    background: #fff; cursor: pointer; font-weight: 600;
+  .thumbnail {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
   }
-  .btn-more:hover { background: #f5f5f5; }
 </style>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe.css">
-
-<script type="module" define:vars={{ id }}>
-  import PhotoSwipeLightbox from 'https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe-lightbox.esm.min.js';
-  import PhotoSwipe from 'https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe.esm.min.js';
-
-  const lb = new PhotoSwipeLightbox({
-    gallery: '#' + id,   // usa el id real del contenedor
-    children: 'a',
-    pswpModule: () => PhotoSwipe,
-    showHideAnimationType: 'zoom',
-    wheelToZoom: true,
-    preload: [1, 2],
-    secondaryZoomLevel: 1.5
-  });
-  lb.init();
-</script>
