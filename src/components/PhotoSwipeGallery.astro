@@ -13,7 +13,7 @@ interface Props {
   id?: string;
   items: Item[];
   initial?: number; // cuántas mostrar al cargar
-  step?: number;    // cuántas agrega cada click
+  step?: number;    // cuántas agrega por click
 }
 
 const {
@@ -74,24 +74,24 @@ const queue = items.slice(initialCount);
   </script>
 </section>
 
-<!-- Mostrar más (NO importa que sea inline; no hace imports) -->
-<script type="module">
-  const gallery = document.getElementById("#{id}");
-  const moreBtn = document.getElementById("#{id}-more");
-  const queueEl = document.getElementById("#{id}-queue");
+<!-- Script de "Mostrar más" usando define:vars para inyectar id/step -->
+<script type="module" define:vars={{ id, step }}>
+  const gallery = document.getElementById(id);
+  const moreBtn = document.getElementById(`${id}-more`);
+  const queueEl = document.getElementById(`${id}-queue`);
 
-  const step = Number(moreBtn?.dataset.step || 60);
+  const stepCount = Number(step || 60);
   let queue = [];
   if (queueEl) {
     try { queue = JSON.parse(queueEl.textContent || "[]"); } catch {}
   }
 
   function renderChunk() {
-    const chunk = queue.splice(0, step);
+    const chunk = queue.splice(0, stepCount);
     if (!chunk.length) return;
 
     const frag = document.createDocumentFragment();
-    chunk.forEach((it) => {
+    for (const it of chunk) {
       const a = document.createElement('a');
       a.href = it.original;
       a.setAttribute('data-pswp-width', String(it.width));
@@ -110,34 +110,36 @@ const queue = items.slice(initialCount);
 
       a.appendChild(img);
       frag.appendChild(a);
-    });
-    gallery.appendChild(frag);
+    }
+    gallery?.appendChild(frag);
 
     if (queue.length === 0 && moreBtn) {
       moreBtn.hidden = true;
     } else if (moreBtn) {
-      moreBtn.setAttribute('aria-label', `Mostrar ${Math.min(step, queue.length)} más fotos`);
+      moreBtn.setAttribute('aria-label', `Mostrar ${Math.min(stepCount, queue.length)} más fotos`);
     }
   }
 
   moreBtn?.addEventListener('click', renderChunk);
 </script>
 
+<!-- Importa el inicializador para que Vite lo empaquete -->
 <script type="module">
   import '../scripts/photoswipe-init.ts';
 </script>
 
-
 <style>
   .thumbnail-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: .5rem;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
   }
-  @media (min-width: 768px) {
-    .thumbnail-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .thumbnail {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
   }
-  .thumbnail { width: 100%; height: auto; border-radius: .5rem; display: block; }
   .gallery-actions { display: flex; justify-content: center; margin-top: 1rem; }
   .btn-more {
     padding: .6rem 1rem; border: 1px solid #ddd; border-radius: .5rem;
@@ -145,22 +147,3 @@ const queue = items.slice(initialCount);
   }
   .btn-more:hover { background: #f5f5f5; }
 </style>
-
-<!-- PhotoSwipe desde CDN para asegurar init en el navegador -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe.css">
-<script type="module">
-  import PhotoSwipeLightbox from 'https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe-lightbox.esm.min.js';
-  import PhotoSwipe from 'https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe.esm.min.js';
-
-  // Usa el mismo id que tiene tu contenedor de la galería
-  const lb = new PhotoSwipeLightbox({
-    gallery: '#{id}',           // <-- id del <div id={id} class="pswp-gallery ...">
-    children: 'a',
-    pswpModule: () => PhotoSwipe,
-    showHideAnimationType: 'zoom',
-    wheelToZoom: true,
-    preload: [1, 2],
-    secondaryZoomLevel: 1.5
-  });
-  lb.init();
-</script>
