@@ -1,0 +1,156 @@
+/* ===== ESTILOS GENERALES MOVIL FIRST ===== */
+/* ===== INICIO ===== */
+.gallery-section {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1.2rem;
+  border-radius: 1rem;
+  overflow: visible;
+  animation: fadeInUp 0.6s ease;
+}
+
+.gallery-section h2 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.main-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fcd34d;
+  text-align: center;
+  margin: 2rem 0;
+  font-family: 'Quicksand', sans-serif;
+}
+
+/* ===== FIN ===== */
+
+
+/* ===== GRID DE MINIATURAS ===== */
+/* ===== INICIO ===== */
+.thumbnail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0.75rem;
+}
+
+.thumbnail {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.thumbnail:hover {
+  transform: scale(1.03);
+}
+
+/* ===== FIN ===== */
+
+
+/* ===== MODAL ===== */
+/* ===== INICIO ===== */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.modal:not(.hidden) {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.hidden {
+  display: none;
+}
+
+.image-container {
+  position: relative;
+}
+
+.like-icon {
+  top: 0.5rem;
+  left: 0.5rem;
+  position: absolute;
+}
+
+.modal-img {
+  max-width: 100%;
+  max-height: 80%;
+  border-radius: 1rem;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+.modal-img.fade-out {
+  opacity: 0;
+}
+
+.arrow {
+  display: none;
+}
+
+/* ===== FIN ===== */
+
+
+/* ===== RESPONSIVE ===== */
+/* ===== INICIO ===== */
+
+/* ===== Vista tablet ===== */
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* Estilos para tablets */
+}
+
+/* ===== Vista escritorio ===== */
+@media (min-width: 1024px) {
+  /* Estilos para escritorio */
+}
+
+/* ===== FIN ===== */
+
+
+/* ===== BOTÓN "ME GUSTA" ===== */
+.like-btn {
+  position: absolute;
+  bottom: 2rem;
+  background-color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  font-weight: bold;
+}
+
+.like-btn.liked {
+  color: red;
+  transform: scale(1.1);
+}
+
+
+/* ===== ANIMACIÓN ===== */
+/* ===== INICIO ===== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== FIN ===== */

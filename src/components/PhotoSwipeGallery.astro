@@ -1,0 +1,159 @@
+---
+import 'photoswipe/style.css';
+
+interface Item {
+  original: string;
+  thumbnail: string;
+  width: number;
+  height: number;
+  caption?: string;
+  alt?: string;
+}
+
+interface Props {
+  title?: string;
+  id?: string;
+  items: Item[];
+  initial?: number; // cuántas mostrar al cargar
+  step?: number;    // cuántas agrega cada click
+}
+
+const {
+  title = 'Galería',
+  id = 'pswp-gallery',
+  items = [],
+  initial = 60,
+  step = 60
+} = Astro.props;
+
+const initialCount = Math.min(initial, items.length);
+const firstBatch = items.slice(0, initialCount);
+const queue = items.slice(initialCount);
+---
+
+<section class="gallery-section">
+  {title && <h2>{title}</h2>}
+
+  <div id={id} class="thumbnail-grid pswp-gallery">
+    {firstBatch.map((it, i) => (
+      <a
+        href={it.original}
+        data-pswp-width={it.width}
+        data-pswp-height={it.height}
+        data-pswp-caption={it.caption ?? ''}
+        aria-label={it.alt ?? it.caption ?? `Foto ${i + 1}`}
+      >
+        <img
+          src={it.thumbnail}
+          alt={it.alt ?? it.caption ?? `Foto ${i + 1}`}
+          loading="lazy"
+          decoding="async"
+          class="thumbnail"
+          srcset={`${it.thumbnail} 800w, ${it.original} 1098w`}
+          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+        />
+      </a>
+    ))}
+  </div>
+
+  {queue.length > 0 && (
+    <div class="gallery-actions">
+      <button
+        id={`${id}-more`}
+        class="btn-more"
+        type="button"
+        data-step={step}
+        aria-label={`Mostrar ${Math.min(step, queue.length)} más fotos`}
+      >
+        Mostrar más
+      </button>
+    </div>
+  )}
+
+  <!-- Cola de ítems para el “Mostrar más” -->
+  <script type="application/json" id={`${id}-queue`}>
+    {JSON.stringify(queue)}
+  </script>
+</section>
+
+<script type="module">
+  import PhotoSwipeLightbox from 'photoswipe/lightbox';
+
+  const gallery = document.getElementById("#{id}");
+  const moreBtn = document.getElementById("#{id}-more");
+  const queueEl = document.getElementById("#{id}-queue");
+
+  const step = Number(moreBtn?.dataset.step || 60);
+  let queue = [];
+  if (queueEl) {
+    try { queue = JSON.parse(queueEl.textContent || "[]"); } catch {}
+  }
+
+  function renderChunk() {
+    const chunk = queue.splice(0, step);
+    if (!chunk.length) return;
+
+    const frag = document.createDocumentFragment();
+    chunk.forEach((it, i) => {
+      const a = document.createElement('a');
+      a.href = it.original;
+      a.setAttribute('data-pswp-width', String(it.width));
+      a.setAttribute('data-pswp-height', String(it.height));
+      if (it.caption) a.setAttribute('data-pswp-caption', it.caption);
+      a.setAttribute('aria-label', it.alt || it.caption || 'Foto');
+
+      const img = document.createElement('img');
+      img.src = it.thumbnail;
+      img.alt = it.alt || it.caption || 'Foto';
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      img.className = 'thumbnail';
+      img.setAttribute('srcset', `${it.thumbnail} 800w, ${it.original} 1098w`);
+      img.setAttribute('sizes', '(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw');
+
+      a.appendChild(img);
+      frag.appendChild(a);
+    });
+    gallery.appendChild(frag);
+
+    if (queue.length === 0 && moreBtn) {
+      moreBtn.hidden = true;
+    } else if (moreBtn) {
+      moreBtn.setAttribute('aria-label', `Mostrar ${Math.min(step, queue.length)} más fotos`);
+    }
+  }
+
+  moreBtn?.addEventListener('click', renderChunk);
+
+  // Inicializa PhotoSwipe (funciona también con ítems añadidos luego)
+  const lb = new PhotoSwipeLightbox({
+    gallery: '#{id}',
+    children: 'a',
+    pswpModule: () => import('photoswipe'),
+    showHideAnimationType: 'zoom',
+    wheelToZoom: true,
+    preload: [1, 2],
+    secondaryZoomLevel: 1.5,
+    paddingFn: () => ({ top: 20, bottom: 20, left: 16, right: 16 })
+  });
+  lb.init();
+</script>
+
+<style>
+  /* Opcional: estilos básicos si no los tienes ya */
+  .thumbnail-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .5rem;
+  }
+  @media (min-width: 768px) {
+    .thumbnail-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+  .thumbnail { width: 100%; height: auto; border-radius: .5rem; display: block; }
+  .gallery-actions { display: flex; justify-content: center; margin-top: 1rem; }
+  .btn-more {
+    padding: .6rem 1rem; border: 1px solid #ddd; border-radius: .5rem;
+    background: #fff; cursor: pointer; font-weight: 600;
+  }
+  .btn-more:hover { background: #f5f5f5; }
+</style>

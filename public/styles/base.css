@@ -1,0 +1,49 @@
+/* ===== GLOBAL RESET Y FONDOS ===== */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #132546;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+/* ===== TIPOGRAFÍA Y TEXTO GENERAL ===== */
+a {
+  text-decoration: none;
+  border: none;
+  outline: none;
+}
+
+h2 {
+  font-family: "Dancing Script", cursive;
+  font-size: 40px;
+  margin: 0 0 10px 0;
+  color: #d4af37;
+}
+
+h3 {
+  font-family: "Playfair Display", serif;
+  color: #254a8b;
+  font-size: 20px;
+  margin: 0 0 10px 0;
+  padding: 0 50px;
+}
+
+/* ===== RESPONSIVE HEADINGS ===== */
+@media (max-width: 600px) {
+  h2 {
+    font-size: 30px;
+  }
+
+  h3 {
+    font-size: 18px;
+    padding: 0 30px;
+  }
+}

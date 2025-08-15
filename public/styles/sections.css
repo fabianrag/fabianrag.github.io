@@ -1,0 +1,238 @@
+/* ===== SECCIÓN INVITACIÓN ===== */
+#invitacion {
+  background: linear-gradient(to bottom right, #f3c52f, #f7e1a0e6);
+}
+
+#bordeIntermedio {
+  margin: 1px 0;
+  width: 99.5%;
+  height: 99.5%;
+  background: white;
+  border-radius: 10px;
+}
+
+#bordeInterno {
+  margin: 2px 0;
+  width: 99%;
+  height: 99%;
+  background: linear-gradient(to bottom right, #f1c32a, #f7e1a0bb);
+  border-radius: 10px;
+}
+
+#contenido {
+  position: relative;
+  margin: 4px 0;
+  width: 98%;
+  height: 98%;
+  padding: 50px 0 100px;
+  background: white;
+  border-radius: 10px;
+}
+
+#contenido h3 {
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+#contenido h3:last-of-type {
+  margin-bottom: 20px;
+}
+
+#principalTitle {
+  position: relative;
+  margin-top: 25px;
+  padding-top: 50px;
+  text-align: center;
+}
+
+#principalTitle p {
+  font-family: "Great Vibes", cursive;
+  font-size: 90px;
+  color: #3565b7;
+  letter-spacing: 5px;
+  margin: 0;
+  padding: 0;
+}
+
+#principalTitle p:first-of-type {
+  position: absolute;
+  top: 0;
+}
+
+#subtitulo {
+  text-align: center;
+  font-family: "Dancing Script", cursive;
+  color: #254a8b;
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding: 0 10%;
+}
+
+#dateContainer {
+  color: #3565b7;
+  font-family: "Playfair Display", serif;
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gradient {
+  background: linear-gradient(to right, #f7e1a0bb, #9f8220);
+}
+
+.gradient p {
+  background: white;
+  margin: 2px -1px;
+  padding: 15px 60px;
+}
+
+#dayContainer {
+  margin-bottom: 10px;
+  text-align: center;
+  padding: 0 10px;
+}
+
+#dayContainer p:first-of-type {
+  font-size: 90px;
+  margin: 0;
+}
+
+#dayContainer p:last-of-type {
+  font-size: 20px;
+  color: #254a8b;
+  margin: 0;
+}
+
+/* ===== SECCIÓN MENÚ ===== */
+#menu {
+  background-color: #d7e3f4;
+  border: 3px solid #2e2e2e;
+}
+
+#menu h2 {
+  color: #d4a373;
+}
+
+#menu h3 {
+  color: #2e2e2e;
+}
+
+/* ===== SECCIÓN DRESS CODE ===== */
+#dress {
+  position: relative;
+  background-color: #f5e6e8;
+  border: 3px solid #5d4037;
+}
+
+#dress h2 {
+  color: #8c9a3c;
+}
+
+#dress h3 {
+  color: #5d4037;
+}
+
+/* ===== SECCIÓN CÓMO LLEGAR ===== */
+#llegar {
+  background-color: #e0f2f1;
+  border: 3px solid #2c3e50;
+}
+
+#llegar h2 {
+  color: #bfa145;
+}
+
+#llegar h3,
+#llegar a {
+  color: #2c3e50;
+}
+
+#llegar a:first-child {
+  margin-right: 20px;
+}
+
+/* ===== FLORALES ===== */
+#florTR {
+  position: absolute;
+  top: -5px;
+  right: -6px;
+}
+
+#florBL {
+  position: absolute;
+  bottom: -16px;
+  left: -41px;
+  width: 230px;
+}
+
+#florDress {
+  position: absolute;
+  bottom: -150px;
+  left: 200px;
+  width: 350px;
+}
+
+/* ===== RESPONSIVE SECTIONS ===== */
+@media (max-width: 650px) {
+  #contenido h4 {
+    font-size: 30px;
+  }
+
+  #subtitulo {
+    margin-bottom: 40px;
+    font-size: 18px;
+  }
+
+  #principalTitle p {
+    font-size: 60px;
+  }
+
+  #dateContainer {
+    position: relative;
+    flex-direction: column;
+    padding-top: 40px;
+    font-size: 20px;
+    margin-bottom: 35px;
+  }
+
+  #dateContainer div:first-of-type {
+    position: absolute;
+    top: 0;
+  }
+
+  #dayContainer p:first-of-type {
+    font-size: 60px;
+  }
+
+  #dayContainer p:last-of-type {
+    font-size: 16px;
+  }
+
+  #florTR {
+    top: 0;
+    right: 0;
+    width: 200px;
+  }
+
+  #florBL {
+    bottom: -100px;
+    left: -35px;
+    width: 200px;
+  }
+
+  #florDress {
+    bottom: -100px;
+    left: 160px;
+    width: 250px;
+  }
+
+  #menu,
+  #dress,
+  #llegar {
+    border: none;
+  }
+}

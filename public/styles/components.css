@@ -1,0 +1,35 @@
+/* ===== ENLACES DE NAVEGACIÓN ===== */
+.nav-link {
+  color: #d4af37;
+  text-decoration: none;
+  font-weight: normal;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+.active-link {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.disabled-link {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.8;
+}
+
+/* ===== TEXTOS Y TÍTULOS ===== */
+.titledown {
+  margin-top: 30px;
+}
+
+.parrafo {
+  width: 320px;
+}
+
+/* ===== ESTADO OCULTO GENERAL ===== */
+.hidden {
+  display: none;
+}
