@@ -1,23 +1,10 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import GallerySection from "../components/GallerySection.astro";
+import PhotoSwipeGallery from "../components/PhotoSwipeGallery.astro";
+import items from "../data/gallery.json"; // generado por tu script
 ---
 
-<!-- Enlaza tu script externo (o podrías poner un <script> inline, etc.) -->
-<script type="module" src="/scripts/galleryScript.js"></script>
-
 <BaseLayout title="Galería de Fotos">
-  <h1>Galería de Fotos</h1>
-  <p>Explora los momentos más especiales del matrimonio.</p>
-
-  <GallerySection
-    title="Preparativos"
-    images={[
-      "/photos/resized/1.jpg",
-      "/photos/resized/2.jpg",
-      "/photos/resized/3.jpg",
-    ]}
-  />
-
-  <!-- Más secciones... -->
+  <h1 class="main-title">Galería</h1>
+  <PhotoSwipeGallery title="Matrimonio" items={items} initial={60} step={60} />
 </BaseLayout>

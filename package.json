@@ -3,12 +3,17 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
+    "gen:gallery": "node scripts/gen-gallery.mjs",
+    "prebuild": "npm run gen:gallery",
     "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "dev": "astro dev"
   },
   "dependencies": {
-    "astro": "^5.5.5"
+    "astro": "^5.13.2",
+    "photoswipe": "^5.4.4"
+  },
+  "devDependencies": {
+    "fast-glob": "^3.3.3",
+    "sharp": "^0.34.3"
   }
 }

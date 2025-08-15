@@ -1,23 +1,69 @@
 ---
+import "photoswipe/style.css";
+
+interface Item {
+  original: string; // URL de la imagen grande (public/…)
+  thumbnail?: string; // URL del thumb (opcional; si no, usa original)
+  width: number; // ancho REAL de la imagen grande
+  height: number; // alto REAL de la imagen grande
+  caption?: string; // texto opcional
+  alt?: string; // accesibilidad
+}
+
 interface Props {
   title: string;
-  images: string[];
+  items: Item[]; // <— cambiamos de images:string[] a items:Item[]
+  bgColor?: string;
+  id?: string; // id único del contenedor (opcional)
 }
-const { title, images } = Astro.props;
+
+const {
+  title,
+  items,
+  bgColor = "#1e2a4a",
+  id = title.toLowerCase().replace(/\s+/g, "-"),
+} = Astro.props;
 ---
 
-<section class="gallery-section">
+<section class="gallery-section" style={`background-color: ${bgColor}`}>
   <h2>{title}</h2>
-  <div class="thumbnails">
-    {images.map((src) => <img src={src} alt={title} class="thumbnail" />)}
-  </div>
 
-  <div class="modal hidden">
-    <button class="close-btn">X</button>
-    <button class="arrow arrow-left">←</button>
-    <img src={images[0]} alt="Foto grande" class="modal-img" />
-    <button class="arrow arrow-right">→</button>
-
-    <div class="like-btn">Me gusta</div>
+  <!-- Contenedor que PhotoSwipe usará como galería -->
+  <div id={id} class="thumbnail-grid pswp-gallery">
+    {
+      items.map((it, i) => (
+        <a
+          href={it.original}
+          data-pswp-width={it.width}
+          data-pswp-height={it.height}
+          data-pswp-caption={it.caption ?? ""}
+          aria-label={it.alt ?? it.caption ?? `${title} ${i + 1}`}
+        >
+          <img
+            src={it.thumbnail ?? it.original}
+            alt={it.alt ?? it.caption ?? `${title} ${i + 1}`}
+            loading="lazy"
+            class="thumbnail"
+          />
+        </a>
+      ))
+    }
   </div>
 </section>
+
+<script type="module">
+  import PhotoSwipeLightbox from "photoswipe/lightbox";
+
+  const lb = new PhotoSwipeLightbox({
+    gallery: "#{id}",
+    children: "a",
+    pswpModule: () => import("photoswipe"),
+    showHideAnimationType: "zoom",
+    wheelToZoom: true,
+    preload: [1, 2],
+    secondaryZoomLevel: 1.5,
+    paddingFn: () => ({ top: 20, bottom: 20, left: 16, right: 16 }),
+  });
+
+  lb.init();
+</script>
