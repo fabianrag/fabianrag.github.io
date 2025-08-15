@@ -7,15 +7,6 @@ interface Item {
   caption?: string;
   alt?: string;
 }
-
-interface Props {
-  title?: string;
-  id?: string;
-  items: Item[];
-  initial?: number; // cuántas mostrar al cargar
-  step?: number;    // cuántas agrega por click
-}
-
 const {
   title = 'Galería',
   id = 'pswp-gallery',
@@ -68,13 +59,12 @@ const queue = items.slice(initialCount);
     </div>
   )}
 
-  <!-- Cola para "Mostrar más" -->
   <script type="application/json" id={`${id}-queue`}>
     {JSON.stringify(queue)}
   </script>
 </section>
 
-<!-- Script de "Mostrar más" usando define:vars para inyectar id/step -->
+<!-- Mostrar más (usa define:vars para inyectar variables reales, sin '#{id}') -->
 <script type="module" define:vars={{ id, step }}>
   const gallery = document.getElementById(id);
   const moreBtn = document.getElementById(`${id}-more`);
@@ -112,18 +102,11 @@ const queue = items.slice(initialCount);
       frag.appendChild(a);
     }
     gallery?.appendChild(frag);
-
-    if (queue.length === 0 && moreBtn) {
-      moreBtn.hidden = true;
-    } else if (moreBtn) {
-      moreBtn.setAttribute('aria-label', `Mostrar ${Math.min(stepCount, queue.length)} más fotos`);
-    }
   }
-
   moreBtn?.addEventListener('click', renderChunk);
 </script>
 
-<!-- Importa el inicializador para que Vite lo empaquete -->
+<!-- IMPORTANTE: importar el inicializador para que Vite lo empaquete -->
 <script type="module">
   import '../scripts/photoswipe-init.ts';
 </script>
@@ -134,12 +117,7 @@ const queue = items.slice(initialCount);
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 12px;
   }
-  .thumbnail {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 8px;
-  }
+  .thumbnail { width: 100%; height: auto; display: block; border-radius: 8px; }
   .gallery-actions { display: flex; justify-content: center; margin-top: 1rem; }
   .btn-more {
     padding: .6rem 1rem; border: 1px solid #ddd; border-radius: .5rem;

@@ -1,11 +1,9 @@
 import PhotoSwipeLightbox from 'photoswipe/lightbox'
 import 'photoswipe/style.css'
 
-// Inicializa un lightbox por cada galería presente
 function initAllGalleries () {
   document.querySelectorAll<HTMLElement>('.pswp-gallery').forEach(el => {
     if (el.dataset.pswpInit === '1') return
-
     const selector = el.id ? `#${el.id}` : '.pswp-gallery'
 
     const lb = new PhotoSwipeLightbox({
@@ -19,7 +17,6 @@ function initAllGalleries () {
       paddingFn: () => ({ top: 20, bottom: 20, left: 16, right: 16 })
     })
     lb.init()
-
     el.dataset.pswpInit = '1'
   })
 }
