@@ -8,7 +8,13 @@ interface Item {
   alt?: string;
 }
 
-const { title = "Galería", id = "pswp-gallery", items = [] } = Astro.props;
+const {
+  title = "Galería",
+  id = "pswp-gallery",
+  items: rawItems = [],
+} = Astro.props;
+
+const items = rawItems as Item[];
 ---
 
 <section class="gallery-section">
@@ -16,11 +22,13 @@ const { title = "Galería", id = "pswp-gallery", items = [] } = Astro.props;
 
   <div id={id} class="thumbnail-grid pswp-gallery">
     {
-      items.map((it, i) => (
+      items.map((it: Item, i: number) => (
         <a
           href={it.original}
           data-pswp-width={it.width}
           data-pswp-height={it.height}
+          data-pswp-srcset={`${it.thumbnail} 800w, ${it.original} 1098w`}
+          data-pswp-sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 80vw"
           data-pswp-caption={it.caption ?? ""}
           aria-label={it.alt ?? it.caption ?? `Foto ${i + 1}`}
         >
