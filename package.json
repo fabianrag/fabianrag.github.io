@@ -9,7 +9,7 @@
     "dev": "astro dev"
   },
   "dependencies": {
-    "astro": "^5.13.2",
+    "astro": "^5.15.9",
     "photoswipe": "^5.4.4"
   },
   "devDependencies": {
