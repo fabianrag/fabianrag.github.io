@@ -3,6 +3,7 @@ const { title = "Matrimonio" } = Astro.props;
 const currentPath = Astro.url.pathname;
 const isHome = currentPath === "/";
 const isMatrimonio = currentPath.startsWith("/matrimonio");
+const isSupermercado = currentPath.startsWith("/supermercado");
 const isMatrimonioInicio = currentPath === "/matrimonio/inicio";
 const isMatrimonioInvitacion = currentPath === "/matrimonio/invitacion";
 const isMatrimonioGaleria = currentPath === "/matrimonio/galeria";
@@ -35,6 +36,16 @@ const isMatrimonioGaleria = currentPath === "/matrimonio/galeria";
               class={isMatrimonio ? "nav-link active-link" : "nav-link"}
             >
               Matrimonio
+            </a>
+          </li>
+          <li>
+            <a
+              href="/supermercado/"
+              class={isSupermercado
+                ? "nav-link active-link disabled-link"
+                : "nav-link"}
+            >
+              Supermercado
             </a>
           </li>
         </ul>
