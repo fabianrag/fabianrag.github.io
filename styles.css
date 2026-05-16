@@ -21,6 +21,78 @@ a {
   outline: none;
 }
 
+header {
+  width: 100%;
+  background: #0f1f3d;
+  border-bottom: 1px solid #d4af37;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+}
+
+nav ul li {
+  position: relative;
+}
+
+.nav-link {
+  display: block;
+  padding: 14px 16px;
+  color: #f7f0d2;
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+}
+
+.nav-link:hover {
+  color: #d4af37;
+}
+
+.active-link {
+  color: #d4af37;
+}
+
+.disabled-link {
+  pointer-events: none;
+}
+
+.submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 180px;
+  background: #f7f2de;
+  border: 1px solid #d4af37;
+  border-radius: 0 0 10px 10px;
+  display: none;
+  flex-direction: column;
+  gap: 0;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+}
+
+.sub-link {
+  color: #254a8b;
+  padding: 10px 14px;
+}
+
+.sub-link:hover {
+  background: #fff8e4;
+}
+
+.has-submenu:hover .submenu,
+.has-submenu:focus-within .submenu,
+.has-submenu .active-link + .submenu {
+  display: flex;
+}
+
 h2 {
   font-family: "Dancing Script", cursive;
   font-size: 40px;
@@ -40,6 +112,27 @@ h3 {
      ESTILOS RESPONSIVE
      ========================================= */
 @media (max-width: 600px) {
+  nav ul {
+    flex-wrap: wrap;
+    gap: 0;
+  }
+
+  .nav-link {
+    padding: 12px 14px;
+  }
+
+  .submenu {
+    position: static;
+    min-width: 100%;
+    border-radius: 8px;
+    margin: 0 0 8px;
+  }
+
+  .has-submenu {
+    width: 100%;
+    text-align: center;
+  }
+
   h2 {
     font-size: 30px;
   }

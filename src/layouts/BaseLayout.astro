@@ -1,6 +1,10 @@
 ---
 const { title = "Matrimonio" } = Astro.props;
 const currentPath = Astro.url.pathname;
+const isHome = currentPath === "/";
+const isGallery = currentPath === "/gallery";
+const isInvitation = currentPath === "/invitation";
+const isMatrimonio = isGallery || isInvitation;
 ---
 
 <!doctype html>
@@ -19,32 +23,40 @@ const currentPath = Astro.url.pathname;
           <li>
             <a
               href="/"
-              class={currentPath === "/"
-                ? "nav-link active-link disabled-link"
-                : "nav-link"}
+              class={isHome ? "nav-link active-link disabled-link" : "nav-link"}
             >
               Inicio
             </a>
           </li>
-          <li>
-            <a
-              href="/gallery"
-              class={currentPath === "/gallery"
-                ? "nav-link active-link disabled-link"
-                : "nav-link"}
-            >
-              Galería
-            </a>
-          </li>
-          <li>
+          <li class="has-submenu">
             <a
               href="/invitation"
-              class={currentPath === "/invitation"
-                ? "nav-link active-link disabled-link"
-                : "nav-link"}
+              class={isMatrimonio ? "nav-link active-link" : "nav-link"}
             >
-              Invitación
+              Matrimonio
             </a>
+            <ul class="submenu">
+              <li>
+                <a
+                  href="/invitation"
+                  class={isInvitation
+                    ? "nav-link sub-link active-link disabled-link"
+                    : "nav-link sub-link"}
+                >
+                  Invitacion
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/gallery"
+                  class={isGallery
+                    ? "nav-link sub-link active-link disabled-link"
+                    : "nav-link sub-link"}
+                >
+                  Galeria
+                </a>
+              </li>
+            </ul>
           </li>
         </ul>
       </nav>
