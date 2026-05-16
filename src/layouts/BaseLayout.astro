@@ -2,9 +2,10 @@
 const { title = "Matrimonio" } = Astro.props;
 const currentPath = Astro.url.pathname;
 const isHome = currentPath === "/";
-const isGallery = currentPath === "/gallery";
-const isInvitation = currentPath === "/invitation";
-const isMatrimonio = isGallery || isInvitation;
+const isMatrimonio = currentPath.startsWith("/matrimonio");
+const isMatrimonioInicio = currentPath === "/matrimonio/inicio";
+const isMatrimonioInvitacion = currentPath === "/matrimonio/invitacion";
+const isMatrimonioGaleria = currentPath === "/matrimonio/galeria";
 ---
 
 <!doctype html>
@@ -17,9 +18,9 @@ const isMatrimonio = isGallery || isInvitation;
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <header>
-      <nav>
-        <ul>
+    <header class="site-header">
+      <nav class="main-nav">
+        <ul class="main-nav-list">
           <li>
             <a
               href="/"
@@ -28,38 +29,53 @@ const isMatrimonio = isGallery || isInvitation;
               Inicio
             </a>
           </li>
-          <li class="has-submenu">
+          <li>
             <a
-              href="/invitation"
+              href="/matrimonio/inicio"
               class={isMatrimonio ? "nav-link active-link" : "nav-link"}
             >
               Matrimonio
             </a>
-            <ul class="submenu">
-              <li>
-                <a
-                  href="/invitation"
-                  class={isInvitation
-                    ? "nav-link sub-link active-link disabled-link"
-                    : "nav-link sub-link"}
-                >
-                  Invitacion
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/gallery"
-                  class={isGallery
-                    ? "nav-link sub-link active-link disabled-link"
-                    : "nav-link sub-link"}
-                >
-                  Galeria
-                </a>
-              </li>
-            </ul>
           </li>
         </ul>
       </nav>
+
+      {isMatrimonio && (
+        <nav class="matrimonio-subheader" aria-label="Navegacion matrimonio">
+          <ul class="subheader-list">
+            <li>
+              <a
+                href="/matrimonio/inicio"
+                class={isMatrimonioInicio
+                  ? "subheader-link active-link disabled-link"
+                  : "subheader-link"}
+              >
+                Inicio
+              </a>
+            </li>
+            <li>
+              <a
+                href="/matrimonio/invitacion"
+                class={isMatrimonioInvitacion
+                  ? "subheader-link active-link disabled-link"
+                  : "subheader-link"}
+              >
+                Invitacion
+              </a>
+            </li>
+            <li>
+              <a
+                href="/matrimonio/galeria"
+                class={isMatrimonioGaleria
+                  ? "subheader-link active-link disabled-link"
+                  : "subheader-link"}
+              >
+                Galeria
+              </a>
+            </li>
+          </ul>
+        </nav>
+      )}
     </header>
 
     <slot />
