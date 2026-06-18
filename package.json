@@ -9,11 +9,14 @@
     "dev": "astro dev"
   },
   "dependencies": {
-    "astro": "^5.15.9",
+    "astro": "^6.4.8",
     "photoswipe": "^5.4.4"
   },
   "devDependencies": {
     "fast-glob": "^3.3.3",
     "sharp": "^0.34.3"
+  },
+  "overrides": {
+    "esbuild": "^0.28.1"
   }
 }
