@@ -1,0 +1,207 @@
+---
+const currentPath = Astro.url.pathname;
+
+const isHome = currentPath === "/";
+const isMatrimonio = currentPath.startsWith("/matrimonio");
+const isMatrimonioInicio = currentPath === "/matrimonio/inicio";
+const isMatrimonioInvitacion = currentPath === "/matrimonio/invitacion";
+const isMatrimonioGaleria = currentPath === "/matrimonio/galeria";
+
+const mainLinks = [
+  { href: "/", label: "Inicio", active: isHome },
+  { href: "/matrimonio/inicio", label: "Matrimonio", active: isMatrimonio },
+];
+
+const matrimonioLinks = [
+  { href: "/matrimonio/inicio", label: "Inicio", active: isMatrimonioInicio },
+  { href: "/matrimonio/invitacion", label: "Invitación", active: isMatrimonioInvitacion },
+  { href: "/matrimonio/galeria", label: "Galería", active: isMatrimonioGaleria },
+];
+---
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="site-logo" aria-label="Ir al inicio">
+      Consuelo &amp; Fabián
+    </a>
+
+    <nav class:list={["main-nav", { "main-nav--sub": isMatrimonio }]} aria-label="Navegación principal">
+      <ul class="main-nav-list">
+        {mainLinks.map(({ href, label, active }) => (
+          <li>
+            <a
+              href={href}
+              class:list={["nav-link", { "nav-link--active": active }]}
+              aria-current={active ? "page" : undefined}
+            >
+              {label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+
+  {isMatrimonio && (
+    <nav class="sub-nav" aria-label="Sección matrimonio">
+      <ul class="sub-nav-list">
+        {matrimonioLinks.map(({ href, label, active }) => (
+          <li>
+            <a
+              href={href}
+              class:list={["sub-link", { "sub-link--active": active }]}
+              aria-current={active ? "page" : undefined}
+            >
+              {label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  )}
+</header>
+
+<style>
+  .site-header {
+    width: 100%;
+    background: #0f1f3d;
+    border-bottom: 2px solid #d4af37;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-inner {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 0 24px;
+  }
+
+  .site-logo {
+    font-family: "Great Vibes", cursive;
+    font-size: 26px;
+    color: #d4af37;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: opacity 0.15s;
+    justify-self: start;
+  }
+
+  .site-logo:hover {
+    opacity: 0.8;
+  }
+
+  /* ── Navegación principal ── */
+  .main-nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .nav-link {
+    display: block;
+    padding: 14px 20px;
+    color: #f7f0d2;
+    font-family: "Playfair Display", serif;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .nav-link:hover {
+    color: #d4af37;
+    border-bottom-color: #d4af37;
+  }
+
+  .nav-link--active {
+    color: #d4af37;
+    border-bottom-color: #d4af37;
+    pointer-events: none;
+  }
+
+  /* ── Subnavegación matrimonio ── */
+  .sub-nav {
+    background: linear-gradient(to right, #f7e1a0, #efd07c);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .sub-nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 4px 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .sub-link {
+    display: block;
+    padding: 5px 16px;
+    color: #1a3a6e;
+    font-family: "Playfair Display", serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 20px;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .sub-link:hover {
+    background: rgba(15, 31, 61, 0.12);
+    color: #0f1f3d;
+  }
+
+  /* Pill oscuro para la página activa — visible sobre el fondo dorado */
+  .sub-link--active {
+    background: #0f1f3d;
+    color: #d4af37;
+    font-weight: 600;
+    pointer-events: none;
+  }
+
+  /* ── Mobile: un solo nivel de nav ── */
+  @media (max-width: 640px) {
+    .header-inner {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      padding: 8px 12px 0;
+    }
+
+    .site-logo {
+      font-size: 22px;
+      padding-bottom: 2px;
+    }
+
+    /* En mobile dentro de Matrimonio, ocultar el nav principal:
+       el logo ya lleva al inicio y el submenú cubre la navegación */
+    .main-nav--sub {
+      display: none;
+    }
+
+    .nav-link {
+      padding: 8px 12px;
+      font-size: 13px;
+    }
+
+    .sub-nav-list {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 4px;
+      padding: 6px 8px;
+    }
+
+    .sub-link {
+      padding: 4px 14px;
+      font-size: 13px;
+    }
+  }
+</style>

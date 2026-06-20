@@ -1,0 +1,149 @@
+---
+const {
+  title = "Galería",
+  id = "pswp-gallery",
+  src = "/data/gallery.json",
+} = Astro.props;
+---
+
+<section class="gallery-section">
+  {title && <h2>{title}</h2>}
+  <div id={id} class="thumbnail-grid pswp-gallery" data-gallery-id={id} data-gallery-src={src}>
+    <p class="gallery-loading">Cargando fotos…</p>
+  </div>
+</section>
+
+<script>
+  import PhotoSwipeLightbox from "photoswipe/lightbox";
+  import "photoswipe/style.css";
+
+  function buildAnchor(it: GalleryItem, i: number): HTMLAnchorElement {
+    const a = document.createElement("a");
+    a.href = it.original;
+    a.dataset.pswpWidth = String(it.width);
+    a.dataset.pswpHeight = String(it.height);
+    a.dataset.pswpSrcset = `${it.thumbnail} 800w, ${it.original} 1098w`;
+    a.dataset.pswpSizes = "(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 80vw";
+    a.dataset.pswpCaption = it.caption ?? "";
+    a.setAttribute("aria-label", it.alt ?? it.caption ?? `Foto ${i + 1}`);
+    a.dataset.orientation = it.width > it.height ? "landscape" : "portrait";
+
+    const img = document.createElement("img");
+    img.src = it.thumbnail;
+    img.alt = it.alt ?? it.caption ?? `Foto ${i + 1}`;
+    img.loading = i === 0 ? "eager" : "lazy";
+    if (i === 0) img.fetchPriority = "high";
+    img.decoding = i === 0 ? "sync" : "async";
+    img.className = "thumbnail";
+    img.srcset = `${it.thumbnail} 800w, ${it.original} 1098w`;
+    img.sizes = "(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw";
+
+    a.appendChild(img);
+    return a;
+  }
+
+  function justify(container: HTMLElement, targetHeight: number) {
+    const links = Array.from(container.querySelectorAll<HTMLAnchorElement>("a[data-pswp-width]"));
+    const gap = 6;
+    const containerWidth = container.clientWidth;
+
+    let i = 0;
+    while (i < links.length) {
+      let j = i;
+      let totalAspect = 0;
+
+      while (j < links.length) {
+        const a = links[j];
+        const w = parseInt(a.dataset.pswpWidth!);
+        const h = parseInt(a.dataset.pswpHeight!);
+        totalAspect += w / h;
+        j++;
+        const filled = totalAspect * targetHeight + gap * (j - i - 1);
+        if (filled >= containerWidth) break;
+      }
+
+      const totalGaps = gap * (j - i - 1);
+      const rowHeight = Math.min((containerWidth - totalGaps) / totalAspect, targetHeight);
+
+      for (let k = i; k < j; k++) {
+        const a = links[k];
+        const w = parseInt(a.dataset.pswpWidth!);
+        const h = parseInt(a.dataset.pswpHeight!);
+        a.style.width = (w / h) * rowHeight + "px";
+        a.style.height = rowHeight + "px";
+      }
+
+      i = j;
+    }
+  }
+
+  interface GalleryItem {
+    original: string;
+    thumbnail: string;
+    width: number;
+    height: number;
+    caption?: string;
+    alt?: string;
+  }
+
+  async function initGallery(container: HTMLElement) {
+    const id = container.dataset.galleryId!;
+    const src = container.dataset.gallerySrc!;
+
+    const res = await fetch(src);
+    const items: GalleryItem[] = await res.json();
+
+    container.innerHTML = "";
+    const fragment = document.createDocumentFragment();
+    items.forEach((it, i) => fragment.appendChild(buildAnchor(it, i)));
+    container.appendChild(fragment);
+
+    const lb = new PhotoSwipeLightbox({
+      gallery: "#" + id,
+      children: "a",
+      pswpModule: () => import("photoswipe"),
+      showHideAnimationType: "zoom",
+      wheelToZoom: true,
+      preload: [1, 2],
+      secondaryZoomLevel: 1.5,
+    });
+    lb.init();
+
+    const targetH = () => window.innerWidth < 600 ? 100 : window.innerWidth < 1024 ? 140 : 180;
+    justify(container, targetH());
+    window.addEventListener("resize", () => justify(container, targetH()));
+  }
+
+  document.querySelectorAll<HTMLElement>(".pswp-gallery[data-gallery-src]").forEach(initGallery);
+</script>
+
+<style>
+  .gallery-loading {
+    color: #888;
+    font-style: italic;
+    padding: 2rem 0;
+  }
+  .thumbnail-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .thumbnail-grid a {
+    display: block;
+    overflow: hidden;
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
+  .thumbnail {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  .thumbnail:hover {
+    transform: scale(1.02);
+  }
+</style>

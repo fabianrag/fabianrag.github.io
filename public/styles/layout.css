@@ -6,36 +6,6 @@
   text-align: center;
 }
 
-/* ===== NAVEGACIÓN ===== */
-header {
-  width: 100%;
-  background-color: #0f1a33;
-  /* tono más oscuro que fondo principal */
-  padding: 20px 0;
-  margin-bottom: 30px;
-}
-
-header nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-}
-
-header nav a {
-  color: #d4af37;
-  font-family: "Playfair Display", serif;
-  font-size: 18px;
-  text-decoration: none;
-  border-bottom: 2px solid transparent;
-  transition: border-bottom 0.3s;
-}
-
-header nav a:hover {
-  border-bottom: 2px solid #d4af37;
-}
 
 /* ===== BOTONES ===== */
 .btn-gallery {
@@ -79,6 +49,13 @@ header nav a:hover {
   width: 650px;
   margin: 0 auto 30px;
   border-radius: 10px;
+}
+
+.photo {
+  display: block;
+  width: 650px;
+  max-width: 100%;
+  border: 3px solid #bfa145;
 }
 
 @media (max-width: 650px) {

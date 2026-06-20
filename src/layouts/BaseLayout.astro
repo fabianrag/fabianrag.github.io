@@ -1,94 +1,34 @@
 ---
-const { title = "Matrimonio" } = Astro.props;
-const currentPath = Astro.url.pathname;
-const isHome = currentPath === "/";
-const isMatrimonio = currentPath.startsWith("/matrimonio");
-const isSupermercado = currentPath.startsWith("/supermercado");
-const isMatrimonioInicio = currentPath === "/matrimonio/inicio";
-const isMatrimonioInvitacion = currentPath === "/matrimonio/invitacion";
-const isMatrimonioGaleria = currentPath === "/matrimonio/galeria";
+import SiteHeader from "../components/SiteHeader.astro";
+
+const { title = "Consuelo y Fabián" } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Boda de Consuelo y Fabián" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Playfair+Display:wght@400;600;700&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Playfair+Display:wght@400;600;700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <header class="site-header">
-      <nav class="main-nav">
-        <ul class="main-nav-list">
-          <li>
-            <a
-              href="/"
-              class={isHome ? "nav-link active-link disabled-link" : "nav-link"}
-            >
-              Inicio
-            </a>
-          </li>
-          <li>
-            <a
-              href="/matrimonio/inicio"
-              class={isMatrimonio ? "nav-link active-link" : "nav-link"}
-            >
-              Matrimonio
-            </a>
-          </li>
-          <li>
-            <a
-              href="/supermercado/"
-              class={isSupermercado
-                ? "nav-link active-link disabled-link"
-                : "nav-link"}
-            >
-              Supermercado
-            </a>
-          </li>
-        </ul>
-      </nav>
-
-      {isMatrimonio && (
-        <nav class="matrimonio-subheader" aria-label="Navegacion matrimonio">
-          <ul class="subheader-list">
-            <li>
-              <a
-                href="/matrimonio/inicio"
-                class={isMatrimonioInicio
-                  ? "subheader-link active-link disabled-link"
-                  : "subheader-link"}
-              >
-                Inicio
-              </a>
-            </li>
-            <li>
-              <a
-                href="/matrimonio/invitacion"
-                class={isMatrimonioInvitacion
-                  ? "subheader-link active-link disabled-link"
-                  : "subheader-link"}
-              >
-                Invitacion
-              </a>
-            </li>
-            <li>
-              <a
-                href="/matrimonio/galeria"
-                class={isMatrimonioGaleria
-                  ? "subheader-link active-link disabled-link"
-                  : "subheader-link"}
-              >
-                Galeria
-              </a>
-            </li>
-          </ul>
-        </nav>
-      )}
-    </header>
-
+    <SiteHeader />
     <slot />
   </body>
 </html>

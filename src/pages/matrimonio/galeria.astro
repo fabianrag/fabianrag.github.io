@@ -1,10 +1,9 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import PhotoSwipeGallery from "../../components/PhotoSwipeGallery.astro";
-import items from "../../data/gallery.json";
+import Gallery from "../../components/Gallery.astro";
 ---
 
 <BaseLayout title="Galería de Fotos">
   <h1 class="main-title">Galería</h1>
-  <PhotoSwipeGallery id="galeria-matri" title="Matrimonio" items={items} />
+  <Gallery id="galeria-matri" title="Matrimonio" src="/data/gallery.json" />
 </BaseLayout>

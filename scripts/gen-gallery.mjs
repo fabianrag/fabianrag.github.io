@@ -58,7 +58,12 @@ for (const m of mobileFiles) {
 // Orden opcional por nombre
 items.sort((a, b) => a.id.localeCompare(b.id, undefined, { numeric: true }));
 
-await fs.mkdir('src/data', { recursive: true });
-await fs.writeFile('src/data/gallery.json', JSON.stringify(items, null, 2), 'utf8');
+const json = JSON.stringify(items, null, 2);
 
-console.log(`✅ Generado src/data/gallery.json con ${items.length} fotos`);
+await fs.mkdir('src/data', { recursive: true });
+await fs.writeFile('src/data/gallery.json', json, 'utf8');
+
+await fs.mkdir('public/data', { recursive: true });
+await fs.writeFile('public/data/gallery.json', json, 'utf8');
+
+console.log(`✅ Generado src/data/gallery.json y public/data/gallery.json con ${items.length} fotos`);

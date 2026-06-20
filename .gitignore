@@ -26,3 +26,6 @@ pnpm-debug.log*
 backup/
 src/assets/venv/
 public/photos/
+.venv/
+src/data/gallery.json
+public/data/gallery.json
